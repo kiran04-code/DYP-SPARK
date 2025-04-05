@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const {createHmac,randomBytes } = require('node:crypto')
 
 const {cratetoken} = require('../service/auth')
+const { Agent } = require("node:http")
 
 const UserSchema = new mongoose.Schema({
     UserName:{
@@ -23,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     type:String,
     required:true
     },
+    age:{
+    type:Number,
+    required:true
+    },
     salt:{
         type:String,
     }
@@ -41,7 +46,7 @@ UserSchema.pre('save',  function(next){
      return next()
 })
 
-UserSchema.static('matchthepasstone', async function(email,  password,next){
+UserSchema.static('matchthetoken', async function(email,  password,next){
     const user = await this.findOne({email})
     if(!user) throw new Error("user not found")
     const salt = user.salt 
