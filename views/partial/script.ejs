@@ -1,0 +1,56 @@
+<script>
+
+    async function getdata(lat, long) {
+        const apiKey = "14c34fc90ce14570afb120940241510"
+        const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${long}&aqi=no`)
+        return await promise.json()
+    }
+    
+    async function Geylocation() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(gotlocation, failtogetlocation);
+        } else {
+            console.error("Geolocation is not supported by your browser.");
+        }
+    }
+    Geylocation()
+    async function gotlocation(position) {
+        const getting = document.getElementById('new')
+        const { latitude, longitude } = position.coords;
+        console.log("Latitude:", latitude, "Longitude:", longitude);
+    
+        const result = await getdata(latitude, longitude);
+         getting.innerText=`${result.location.name},${result.location.region}-${result.location.country}`
+        if (result) {
+            console.log("Weather Data:", result);
+        } else {
+            console.error("Failed to fetch weather data.");
+        }
+    }
+    
+    function failtogetlocation(error) {
+        console.error("Error getting location:", error.message);
+    }
+      </script>
+      
+<script>
+    const menu = document.getElementById('offcanvasMenu');
+    const toggle = document.getElementById('menuToggle');
+    const close = document.getElementById('menuClose');
+  
+    toggle.addEventListener('click', () => {
+      menu.classList.add('show');
+    });
+  
+    close.addEventListener('click', () => {
+      menu.classList.remove('show');
+    });
+  
+    // Optional: close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('show');
+      }
+    });
+  </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

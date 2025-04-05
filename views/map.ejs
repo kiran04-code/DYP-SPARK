@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Vaccination Hospitals in Pune</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <style>
+    #map {
+      height: 600px;
+      width: 90%;
+      margin-bottom: 120px;
+      border: 2px solid blue;
+      border-radius: 8px;
+      margin-left: 5%;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <style>
+      .srv{
+        height: 60px;
+        width: 100%;
+        display: flex;
+        background-color: rgb(255, 255, 255);
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+      .srv h1{
+       color: blue;
+       font-family: futura;
+       font-size: 1.5rem;
+       ;
+      }
+      label{
+        font-family:Elsevier Sans Web ;
+      }
+      
+      .loginc{
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background: #d1caca95
+      }
+      .logind{
+        height: 15%;
+        width: 40%;
+        border-radius: 4px;
+        background-color: #3900f6;
+        color: #ffffff;
+        font-family:Teachers;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: capitalize;
+      }
+     
+      .logind button{
+        height: 30%;
+        width: 30%;
+        margin-top: 5%;
+        border-radius: 8px;
+        border:none;
+        font-family:Teachers;
+        font-weight: 800;
+        background-color: #ffffff;
+        transition: 0.3s;
+        
+      }
+      .logind button:hover{
+        background-color: #3900f6;
+        
+      }
+      .logind button a:hover{
+        color: #ffffff;
+        
+      }
+      .logind button a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    transition: 0.3s;
+        
+      }
+     .mp{
+
+        width: 100%;
+       
+        display: flex;
+        justify-content: space-between;
+     }
+     .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 10%;
+     }
+     .mp p{
+         margin-left: 25%;
+     }
+     @media (max-width: 700px){
+        .logind{
+        height: 15%;
+        width: 82%;
+      
+      }
+      .logind button{
+        height: 20%;
+        width: 60%;
+       
+      }
+      .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 50%;
+     }
+     .mp p{
+         font-size: 0.7rem;
+         font-weight: 900;
+     }
+     .mp{
+width: 100%;
+}
+     }
+    
+ *::selection{
+    background-color: #000000;
+    color: #ffffff;
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#loader{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 1s;
+}
+#loader h1{
+   color: transparent;
+   font-family: futura;
+   opacity: 0;
+   font-size: 4vw;
+   background: linear-gradient(to right, #1552F0, #4d8eff);
+   -webkit-background-clip: text;
+   position: absolute;
+   animation-name: loder;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+   
+}
+#loader h1:nth-child(2){
+    animation-delay: 2s;
+}
+#loader h1:nth-child(3){
+    animation-delay: 3s;
+}
+
+@keyframes loder {
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+header {
+   width: 100%;
+   height: 60px;
+   /* background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); */
+   display: flex;
+} 
+#page2{
+   margin-top: 100px;
+  
+}
+#movingtext{
+    white-space: nowrap;
+    overflow-x: auto; 
+}
+#movingtext::-webkit-scrollbar{
+    display: none;
+  
+}
+.con{
+    white-space: nowrap;
+    display: inline-block;
+    animation-name: move;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+   animation-iteration-count: infinite;
+
+}
+#movingtext h1{
+   font-size: 3.3vw;
+   font-family: futura;
+   display: inline-block;
+ 
+}
+#gola{
+     height: 3vw;
+     width: 3vw;
+     border-radius: 50%;
+     margin-left: 1vw;
+     filter: blur(1.5px);
+     margin-right: 1vw;
+     display: inline-block;
+     background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+@keyframes move {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+.kkd{
+    height: 7px;
+    width: 100%;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+.navpart1 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4vw;
+}
+
+.life h1 {
+    color: #0a0880;
+    font-size: 1.5em;
+    font-family: futura ;
+}
+.winning h5 {
+    font-size: 0.6em;
+    margin-left: 2.1%;
+    margin-left: 33px;
+    line-height: 15px;
+    letter-spacing: 1.2px;
+    font-family: poppins Medium;
+    color: #0a0880;
+}
+.winning  {
+   height: 25px;
+   width: 200px;
+   display: flex;
+}
+.navpart2 {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    gap: 15px;
+    margin-left: 17vw;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.7%;
+}
+.navpart2 a{
+    font-family: poppins  Medium;
+    font-size: 1em;
+    color: #000000;
+    z-index:9;
+    padding: 5px;
+    font-size: 15px;
+    border:1.5px solid rgba(74, 98, 255, 0.841);
+    border-radius: 19px;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+#hdn2{
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+}
+#hdn2::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    transition: 0.4s ease-in-out;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+    /* display: block; */
+}
+ #hdn2:hover::after{
+   bottom: 0;
+   z-index: -99;
+} 
+.navpart2 a:hover{
+    color: #ffffff;
+}
+.fillinfo{
+    height: 400px;
+    width: 100%;
+    display: flex;
+   margin-bottom: 50px;
+   justify-content: space-evenly;
+   align-items: center;
+}
+.svg{
+    height: 90%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.infif{
+  height: 90%;
+  width: 50%;
+
+}
+.svg img{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    object-fit: contain;
+}
+.he{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.he h2{
+    font-family: futura;
+    color: blue;
+}.ped{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.ped p{
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}.fil{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+}
+.fil a{
+text-decoration: none;
+padding: 10px;
+text-align: center;
+width: 150px;
+font-family:Elsevier Sans Web ;
+background-color: #000dff;
+color: white;
+border-radius: 10px;
+transition: 0.7s ease-in-out;
+}
+.fil a:hover{
+    background-color: #a69aec45;
+    color: black;
+
+}
+.bar {
+    height: 50px;
+    width: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bar i {
+    display: none;
+}
+.hidden {
+    height: 300px;
+    width: 100%;
+    background-color: #1e44ac;
+    display: flex;
+    gap: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+.hidden a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.page1{
+    height:500px;
+    width: 100vw;
+    display: flex;
+  
+}
+.pagem{
+    height:600px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    
+}
+.leftm{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leftm h1{
+    font-family: futura;
+    font-size: 5vw;
+   
+}
+.leftm p{
+    font-family: futura;
+    
+    font-size: 3vw;
+   
+}
+.leftm span{
+    font-family: futura;
+   color: #1e44ac;
+   
+}
+.rightm{
+    height: 50%;
+    width: 100%;
+margin-bottom: 25px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.rightmimg{
+    height: 80%;
+    width: 90%;
+    margin-bottom: 8vh;
+}
+.rightmimg img{
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+
+}
+.righmti{
+    height:20%;
+    width: 100%;
+}
+.righmti h3{
+    color: #000dff;
+    font-family: futura;
+}
+.righmti{
+    height:20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.righmti p{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #1900bc;
+  font-size: 0.5rem;
+}
+.left {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#input1::placeholder {
+    font-size: 15px; /* Adjust size as needed */
+    color: rgb(10, 34, 216); /* Optional */
+    font-weight: bold; /* Optional */
+    opacity: 1; /* Ensure visibility */
+  }
+  
+.left h1{
+    color: #000000;
+    font-family: futura;
+  font-size: 2vw;
+  margin-left: 5vw;
+}
+.left p{
+    color: #000000;
+    font-family: Elsevier Sans Web;
+    font-size: 1vw;
+    margin-left: 5vw;
+}
+.left span{
+    color: #1e44ac;
+}
+
+.right{
+    height: 100%;
+    width: 40%;
+    
+}
+.right .rightimg{
+   height: 70%;
+   width: 100%;
+}
+.rightimg img{
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+    object-fit: contain;
+    
+}
+.vacvit{
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.vacvit h1{
+ text-align: center;
+ font-family: futura;
+ color: #1100ff;
+ font-size:3rem;
+ margin-left: 3.5vw;
+}
+.vacvit p{
+color: #2e00fd;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-left: 8vw;
+}
+.jsdy2{
+    height: 100px;
+    margin-top: 5vh;
+    width: 60%;
+   border: 2px solid blue;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-right: 13vw;
+   box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+}
+.block{
+    height: 90px;
+    width: 100%;
+    background: linear-gradient(to right, #76A9FF, #1552F0, #0A1F44);
+
+
+    display: flex;
+    border: 1.5px solid black;
+}
+.b1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.endse{
+    height:60px;
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+text-align: center;
+
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+.endse h2{
+    font-family: futura;
+    margin-left: 50px;
+    margin-top: 10px;
+    
+    color: #ffffff;
+}
+.b1 h2{
+    font-family: futura;
+   font-size: 1rem;
+    color: #ffffff;
+}
+
+.page2{
+    height: 300px;
+ 
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.pg-1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-1 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-1 p{
+    padding: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.img1{
+    height: 100%;
+    width: 80%;
+    margin-left: 8vw;
+
+}
+.img1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pg-2{
+    height: 100%;
+    width: 50%;
+   
+}
+.page3{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+}
+.pg-3{
+    height: 100%;
+    width: 50%;
+}
+.img2{
+        height: 100%;
+        width: 80%;
+     
+    
+}
+.img2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 30px;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.pg-4{
+    height: 100%;
+    width: 50%;
+}
+.pg-4 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-4 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.page4{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+
+}
+.pg-5{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-5 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-5 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.pg-6{
+    height: 100%;
+    width: 50%;
+}
+.img3{
+        height: 100%;
+        width: 80%;
+        margin-left: 8vw;
+     
+    
+}
+.img3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.page5{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+
+}
+.pg-7{
+ 
+    width: 50%;
+}
+.img4{
+        height: 100%;
+        width: 80%;
+     margin-left: 2vw;
+    
+}
+#user-new{
+    font-size: 2vw;
+   position: relative;
+   left: 3vw;
+}
+.img4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.pg-8{
+    height: 100%;
+    width: 50%;
+    
+}
+.pg-8 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-8 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ddoc{
+ height: 15vh;
+ width: 100vw;
+ display: flex;
+ margin-top: 25px;
+ justify-content: space-evenly;
+background-color: red;
+margin-bottom: 50px;
+ align-items: center;
+}
+.ddoc h3{
+font-family: futura;
+
+text-transform: capitalize;
+}
+.dow{
+    height: 5vh;
+    width: 15vw;
+    margin-top: 5px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+    border-radius: 5px; gap: 1.5vw;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+
+}
+.dow a{
+   text-decoration: none;
+   color: #000;
+   
+}
+.dow a:hover{
+  
+   color: #0234ff;
+   
+}
+.dr{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.srch{
+    min-height: 120vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sr1{
+    height:300px ;
+    width: 400px;
+    border-radius: 2px;
+    background-color: aliceblue;
+
+    overflow: hidden;
+    
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ transition: 0.3s ease-in-out ;
+}
+.sr1:hover{
+   transform: scale(1.03);
+   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.sr1-1{
+    height: 80%;
+    width:99.8%;
+   
+    overflow: hidden;
+
+}
+.sr1 p{
+  margin-left: 1vw;
+  position: relative;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ margin-left: 2vw;
+ font-size: 2vh;
+}
+.sr1 h3{
+    font-family: futura;
+    font-size: 0.8rem;
+    color: #0138ce;
+    position: relative;
+    right:8vw;
+
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    border: 2px solid rgb(0, 0, 0);
+    
+
+   
+}
+.tab{
+    height: 3.5vh;
+    width: 16vh;
+    background-color: rgb(0, 2, 149);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     text-decoration: none;
+     margin-left: 16vw;
+     margin-bottom: 1.1vh;
+}
+.tab p{
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    right: 8px;
+    
+}
+footer{
+    height: 65vh;
+    width:100vw;
+   background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+
+.fotter{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.fotter .fot1-1  p{
+   font-family:Teachers ;
+}
+.fot1-1{
+    height: 30%;
+    width: 35vh;
+    margin-top: 10vh;
+
+}
+#kk01{
+    margin-top:8%;
+}
+#kk01 h2{
+   color: #fffcfc;
+   font-family: futura;
+   margin-left:15px;
+   margin-bottom: 30px;
+}
+#kk01 i{
+    margin-right: 5%;
+    margin-left:15px;
+}
+.fot1-1 h3{
+    /* opacity: 0.5; */
+    color:  #99aff2;
+}
+.fot1-1 p{
+    /* opacity: 0.5; */
+    color:  #ffffff;
+font-size: 1rem;
+margin-top: 2vh;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fot1-1 img{
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+    padding: 2vw;
+    margin-left: 1vw;
+    object-fit: contain;
+}
+.fot1-1-1{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotter2{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    
+   position: relative;
+   bottom: 50px;
+    justify-content: space-evenly;
+
+    
+}
+.fot2-1{
+    height: 100%;
+   width: 70%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+  
+}
+.fot2-1 .fot2-2 {
+     width: 100%;
+     height: 70%;
+     text-transform: capitalize;
+    
+}
+.fot2-1 .fot2-2  h4{
+     margin-left: 14.8%;
+     font-family: Teachers;
+     color: rgb(254, 254, 254)
+}
+.fot2-1 .fot2-2  h4 a{
+   text-decoration: underline;
+   color: #ccc7efc2;
+}
+.fot2-1 h3{
+    color: #ffffff;
+    font-size: 1rem;
+    margin-right: 8vw;
+     font-family: futura;
+}
+.fot2-2{
+    height: 100%;
+   width:30% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+.fot2-2 a{
+   text-decoration: none;
+   color: #ffffff;
+   font-family: futura;
+   font-size: 0.7rem;
+}
+.jsdy2 h1{
+font-size: 1vw;
+position: relative;
+top: 2px;
+right: 20px;
+
+}
+.div{
+  height: 300px;
+    width: 100vw;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+   
+   
+}
+.div-1{
+ height: 100%;
+width: 60%;
+border-radius: 10px;
+border: 1px solid blue;
+background-color: #cacbd4;
+
+   
+}
+.div-2{
+height: 100%;
+width: 35%;
+border-radius: 10px;
+overflow: hidden;
+background-color: #000dff;
+}
+.div-2 img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+}
+.div-1-h2{
+    width:  70%;
+    height: 20%;
+    display: flex;
+    font-family:Teachers ;
+   justify-content: center;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-left: 2.5%;
+    color:  rgb(42, 42, 209);
+   
+}.divkk{
+    height: 2.5px;
+    width: 200px;
+    margin-top: 7px;
+    margin-right: 15%;
+    background-color: rgb(42, 42, 209);
+    border-radius: 10px;
+}
+.div-1-p{
+    height: 50%;
+    width: 85%;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}
+.sev{
+    height: 100px;
+    width: 100%;
+    margin-top: 2%;
+    
+   
+}
+.sev1{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Teachers;
+    color: #0044ff;
+   
+}
+.sev2{
+    height: 60%;
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family:  poppins Medium;
+   color: #0c1885cd;
+    
+}
+.serv{
+    height:200px;
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.fet01{
+    height: 70%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+ 
+}
+.fet01 i{
+  margin-left: 10px;
+ 
+}
+.fet01 span{
+    height: 70%;
+    width: 100%;
+    font-family: Teachers;
+    font-size: 20px;
+   
+}
+.serv1{
+    height: 100%;
+    width: 20%;
+    border:1px solid rgb(13, 13, 230) ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #aeb5ca81;
+    border-radius: 10px;
+}.f2{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+   
+}
+.f2-1{
+    height: 100%;
+    width: 80%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.f2-1 h4{
+    font-family: poppins Medium;
+    color: #332ada;
+}
+.f2-2{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.f2-2 a i{
+ text-decoration: none;
+ font-size: 25px;
+}
+#num2{
+    font-family: futura;
+    font-size: 1.8vw;
+  position: relative;
+  top: 1.5vh;
+}
+.vaxsrc{
+    height:12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    display: flex;
+    flex-direction: column;
+}
+.vaxsrc h2{
+   font-family: futura;
+}
+#input1{
+    height: 7vh;
+    width:40vw;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+}
+#button{
+    height: 7vh;
+    width:10vw;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #2500f5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.dropdown-content{
+    position: absolute;
+    background-color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 35%;
+    height: 15%;
+    color: #0404f0;
+    border: 1px solid #fffbfb;
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;  
+    overflow: auto;
+    display: none;
+    z-index: 1;
+    margin-top: 19%;
+    margin-right: 15%;
+    padding-bottom: 10px;
+}  
+.dropdown-content::-webkit-scrollbar{
+    display: none;
+}
+.fot2-2 h4{
+    
+    position: relative;
+    right: 10px;
+}
+.dropdown-content div {
+    padding: 11px;
+    font-weight: 500;
+    color: #000000;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.dropdown-content div:hover {
+    background-color: #0612fe;
+    color: #ffffff;
+}
+#input1::-webkit-appearance{
+    display: none;
+}
+.hdnwin{
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    margin-top: 5px;
+    border-radius: 25px;
+    border: 2px solid rgb(251, 0, 38);
+}
+@media (max-width: 500px) {
+.serv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    height: 100%;
+}
+.serv1{
+    width: 78%;
+   min-height:50%;
+}
+.sev2{
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.endse{
+    font-size: 2.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .fillinfo{
+        display: flex;
+        flex-direction: column;
+    }
+.svg{
+    height: 100%;
+
+    padding: 20px;
+    width: 100%;
+}
+
+.infif{
+    height: 100%;
+    width: 100%;
+}
+.infif h2{
+    font-size: 16px;
+    position: relative;
+    right: 43.5px;
+}
+.infif p{
+    font-size: 12px;
+    padding: 20px;
+
+}
+.fil{
+    margin-left: 20px;
+    height: 15px;
+    margin-top: 20px;
+
+}
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    
+.div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 5%;
+    
+   
+}
+.div-1-p{
+    font-size: 11px;
+}
+.div-2{
+    display: none;
+}
+.div-1-h2 h2{ 
+    font-size: 13px;
+
+}
+.div-1{
+    height: 100%;
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid blue;
+   background-color: #cacbd4;
+   
+ 
+   }
+   .divkk{
+    display: none;
+   }
+    .hdnwin{
+       display: none;
+    }
+    /* .dropdown-content{
+        margin-top: 65%;
+        margin-right: 15%;
+        width: 65%;
+        height: 65%;
+
+        
+    }   */
+    .right{
+        display: none;
+    }
+    #input1{
+        height: 4vh;
+        width:55vw;
+
+        
+    }
+    #button{
+        height: 4vh;
+        width:15vw;
+       
+    }
+    .jsdy2 h1{
+      background-color: #0044ff;
+        }
+    #num2{
+        font-size: 2vw;
+        background-color: #0044ff;
+    } 
+    .fot1-1 p{
+      margin-left: 4vw;
+      font-size: 0.7rem;
+    }
+    .fot1-1-1 {
+        padding: 4vw;
+    }
+    .fot1-1 h3{
+        /* opacity: 0.5; */
+        font-size: 0.7rem;
+        margin-left: 2vh;
+        color:  #99aff2;}
+    .fot2-2{
+        gap: 2vh;
+    }
+    .fot2-1 h3{
+        color: #ffffff;
+        font-size: 0.5rem;
+        margin-right: 8vw;
+        padding: 25px;
+         font-family: futura;
+    }
+    .fot2-2 a{
+        /* text-decoration: none; */
+        color: #ffffff;
+        font-family: futura;
+        font-size: 0.4rem;
+     }
+    .fot2-2 a:hover{
+      text-decoration: underline white;
+
+     }
+    .navpart1 h1, .navpart1 h5{
+        font-size: 3vw;
+    }
+    .navpart2 a {
+        display: none;
+    }
+    .bar i {
+        display: block;
+        position: relative;
+        left: 80px;
+        font-size: 25px;
+        bottom: 12px;
+    }
+    .hidden a {
+        font-size: 2vw;
+    }
+    .page1{
+        display: none;
+    }
+    .pagem{
+        height:650px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .leftm{
+        height: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .leftm h1{
+        font-family: futura;
+        font-size: 5vw;
+    margin-bottom: 2vh;
+        margin-left: 4vw;
+       
+    }
+    .leftm p{
+        font-family: futura;
+        font-size: 3vw;
+   
+        margin-left: 4vw;
+    
+    }
+    .leftm span{
+        font-family: futura;
+       color: #0044ff;
+       
+    }
+    .jsdy{
+        height: 70px;
+        margin-top: 2vh;
+       width: 90vw;
+       border: 2px solid blue;
+       border-radius: 5px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+    }
+    .jsdy2 h1{
+        font-size: 35px;
+      margin-top: 11px;
+    }
+   
+    .img{
+        height: 90%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    .img2 img{
+        height: 100%;
+        width: 100%;
+        margin-bottom: 5vh;
+       
+    }
+    .b1 h2{
+        font-family: futura;
+       font-size: 2vw;
+       margin-left: 3vw;
+        color: #ffffff;
+    }
+    .page2, .page3, .page4, .page5 {
+        flex-direction: column; 
+        height: auto; 
+    }
+    .pg-1, .pg-2,
+    .pg-3, .pg-4,
+    .pg-5, .pg-6,
+    .pg-7, .pg-8 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img1, .img2, .img3, .img4 {
+        width: 90%; 
+        margin-left: 0;
+    }
+
+    .pg-1 p, .pg-4 p, .pg-5 p, .pg-8 p {
+       font-size: 4vw;     
+    }
+    .pg-1 h2, .pg-4 h2, .pg-5 h2, .pg-8 h2 {
+        font-size: 0.9em; 
+        text-align: center;
+        margin-left: 0;
+    }
+    .vaxsrc h2{
+        font-family: futura;
+        font-size: 0.9em; 
+     }
+.img2 img{
+    display: none;
+   
+} 
+.img4 img{
+    display: none;
+} 
+     .img1 img,  .img3 img{
+        height: auto; 
+        object-fit: contain;
+        object-position: center;
+        border-radius: 15px;
+    }
+    .srch{
+       gap: 20px;
+     padding: 35px;
+    }
+    .sr1-1{
+        height: 65%;
+        width: 90%;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .sr1-1{
+    height: 55%;
+    width: 90%;
+    
+    
+}
+    .sr1 h3{
+  position: relative;
+  right: 22vw;
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    border: 2px solid blue;
+    object-fit:cover;
+    border-radius: 8px;
+   
+}
+.sr1 p{
+  
+   font-size: 1.7vh;
+  }
+.tab{
+    margin-top: 18px;
+    margin-right: 15vw
+} .ddoc h3{
+    font-size: 3.8vw;
+}
+    .dow{
+        height: 4vh;
+        width: 35vw;
+       margin-top: 20px
+    
+    }
+    #user-new{
+        display: none
+    }
+
+    .winning h5 {
+        font-size: 0.4em;
+      position: relative;
+      right: 30px;
+      
+    }
+    .bar i{
+       margin-right: 35px
+    }
+    .fot2-2 h4{
+        font-size: 2vw;
+        position: relative;
+        right: 20px;
+    }
+    .fot1-1 h2{
+        font-size: 3vw;
+        position: relative;
+        top: 20px;
+    }
+    };
+@media (max-width: 700px) {
+    .navpart2 a {
+        font-family: sans-serif;
+        font-size: 0.8em;
+        margin-bottom: 2vw;
+    }
+
+}
+    </style>
+    <main id="main">
+      <header>
+        <div class="navpart1">
+            <div class="life"><h1><i id="remove"  class="fa-solid fa-syringe" style="color: #09125f;"></i> LifeShield</h1></div>
+            <div class="winning"><h5>winning over disease</h5></div>
+        </div>
+        <div class="navpart2">
+          <a id="hdn2"  href="/">HOME</a>
+          <a id="hdn2"  href="services.html">SERVICES</a>
+          <a id="hdn2"  href="FAQS.HTML">FAQ</a>
+          <a id="hdn2"  href="map.html">SEARCH NEAR VACCINE CENTER</a>
+          <a id="hdn2"   href="/signin">Sign In</a>
+        
+          <a  href="/signup" id="hdn2">REGISTER</a>
+          <% if (locals.user) { %>
+              <a id="hdn2"   href="/profile">Profile</a>
+          <% } %>
+          <!-- <i  id="user-new" class="fa-solid fa-user" style="color: #ffffff;"></i> -->
+          <div class="bar">
+              <i id="bar" class="fa-solid fa-bars" style="color: #081085;"></i>
+          </div>
+        </div>
+       </header>
+       <div class="kkd"></div>
+       <div id="hidden" class="hidden">
+        <a id="hdn" href="index.html">HOME</a>
+        <a id="hdn" href="abt.html">ABOUT</a>
+        <a id="hdn" href="services.html">SERVICES</a>
+        <a  href="http://localhost:3002/">REGISTER/PROFLE</a>
+        <a id="hdn2"  href="map.html">SEARCH NEAR VACCINE CENTER</a>
+        
+       </div>
+   <div class="srv"><h1>Search Vaccination Hospitals in Pune</h1></div>
+
+  <!-- Form to accept location and hospital name -->
+   <div class="frk">
+    <form id="searchForm">
+      <label for="locationInput">Choose Location:</label>
+      <select id="locationInput" required>
+        <option value="Kondhwa">Kondhwa</option>
+        <option value="Katraj">Katraj</option>
+        <option value="Pimpri">Pimpri</option>
+        <option value="Shivajinagar">Shivajinagar</option>
+        <option value="Hadapsar">Hadapsar</option>
+        <option value="Viman Nagar">Viman Nagar</option>
+        <option value="Wakad">Wakad</option>
+        <option value="Hinjewadi">Hinjewadi</option>
+        <option value="Kharadi">Kharadi</option>
+        <option value="Kothrud">Kothrud</option>
+        <option value="Bibwewadi">Bibwewadi</option>
+      </select>
+    <label for="hospitalInput">Choose Hospital:</label>
+    <select id="hospitalInput" required>
+      <!-- Hospitals will be populated dynamically based on the selected location -->
+    </select>
+
+    <button type="submit"id="buttonk">Search</button>
+  </form>
+</div>
+
+  <div     id="map"></div>
+  <footer>
+    <div class="fotter">
+        <div class="fot1-1"><h3>VACCINATION SERVICES</h3> <p>Up to date info about vaccine</p>
+            <p>Age based reminders</p>
+            <p>vaccine history</p>
+            <p>slot booking</p></div>
+        <div class="fot1-1"><h3>CONTACTS US</h3> <p>Helpline: +91-11-23978046 (Toll Free - 1075 ) </p>
+            <p>Technical Helpline: 7774025744</p></div>
+        <div class="fot1-1" id="kk01"><h2><i id="remove"  class="fa-solid fa-syringe" style="color: #ffffff;"></i>Lifeshield.com</h2>
+            <div class="fot1-1-1"> <a href=""></a><i class="fa-regular fa-envelope" style="color: #ffffff;"></i> 
+                <a href=""><i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a> 
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-sm" style="color: #ffffff;"></i></a>
+                <a href=""><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></div></a></div>
+    </div>
+    <div class="auth1"></div>
+    <!-- <div class="auth"><h5>this platform has been carefully assessed to ensure compliance with medical and operational standards necessary for effective vaccination management.Authorized by: Dr. Raj Ganacharya M.D. (Pediatics)Consulting Pediatrician and neonatologist <a href="auth.html">know more</a></h2></div> -->
+    <div class="fotter2"> 
+ <div class="fot2-1">
+    <h3>All rights Reserved © LifeShield, 2024 & This Website is Design by Team ASEAP</h3></div>
+ <div class="fot2-2"><a href="">Terms of service</a><a href="privacyandpolicy.html">privacy policy</a></div>
+    </div>
+</footer>
+  <script>
+    // Map initialization
+    var map = L.map('map').setView([18.5204, 73.8567], 12); // Centered on Pune city
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // List of vaccination hospitals categorized by location
+    const hospitalsByLocation = {
+      "Kondhwa": [
+        { name: "Jeewansathi Hospital", lat: 18.4790, lon: 73.8990, id: 1 },
+        { name: "Noble Hospital", lat: 18.5131, lon: 73.8875, id: 2 },
+        { name: "Siddhivinayak Hospital", lat: 18.4783, lon: 73.8882, id: 3 },
+        { name: "Kondhwa General Hospital", lat: 18.4821, lon: 73.8950, id: 4 },
+        { name: "Motherhood Hospital", lat: 18.4743, lon: 73.8925, id: 5 }
+      ],
+      "Katraj": [
+        { name: "Shivprasad Hospital", lat: 18.4639, lon: 73.9240, id: 6 },
+        { name: "Jeevandhara Hospital", lat: 18.4512, lon: 73.9076, id: 7 },
+        { name: "Dr. Patil’s Clinic", lat: 18.4553, lon: 73.9099, id: 8 },
+        { name: "Rainbow Children's Clinic", lat: 18.4674, lon: 73.9178, id: 9 },
+        { name: "Vatsalya Children's Clinic", lat: 18.4620, lon: 73.9215, id: 10 }
+      ],
+      "Pimpri": [
+        { name: "Pimpri Multispeciality Hospital", lat: 18.6231, lon: 73.8078, id: 11 },
+        { name: "Aditya Birla Memorial Hospital", lat: 18.6550, lon: 73.8171, id: 12 },
+        { name: "Shree Clinic", lat: 18.6402, lon: 73.7994, id: 13 },
+        { name: "Dr. Aarti Hospital", lat: 18.6199, lon: 73.8230, id: 14 },
+        { name: "Medicare Clinic", lat: 18.6134, lon: 73.8125, id: 15 }
+      ],
+      "Shivajinagar": [
+        { name: "Sahyadri Hospital", lat: 18.5147, lon: 73.8533, id: 16 },
+        { name: "Usha Nursing Home", lat: 18.5250, lon: 73.8436, id: 17 },
+        { name: "Cloudnine Maternity Hospital", lat: 18.5315, lon: 73.8450, id: 18 },
+        { name: "Srinivas Hospital", lat: 18.5222, lon: 73.8562, id: 19 },
+        { name: "KEM Hospital", lat: 18.5105, lon: 73.8430, id: 20 }
+      ],
+      "Hadapsar": [
+        { name: "Noble Hospital", lat: 18.5191, lon: 73.9375, id: 21 },
+        { name: "Sahyadri Hospital", lat: 18.5322, lon: 73.9213, id: 22 },
+        { name: "Dr. Deshmukh Clinic", lat: 18.5158, lon: 73.9227, id: 23 },
+        { name: "Shivai Multispecialty Clinic", lat: 18.5235, lon: 73.9289, id: 24 },
+        { name: "H3 Hospital", lat: 18.5223, lon: 73.9248, id: 25 }
+      ],
+      "Viman Nagar": [
+        { name: "Apollo Clinic", lat: 18.5672, lon: 73.9193, id: 26 },
+        { name: "Apollo Spectra Hospitals", lat: 18.5635, lon: 73.9221, id: 27 },
+        { name: "Cloudnine Hospital", lat: 18.5742, lon: 73.9168, id: 28 },
+        { name: "Dhanwantri Hospital", lat: 18.5583, lon: 73.9170, id: 29 },
+        { name: "Sparsh Hospital", lat: 18.5650, lon: 73.9215, id: 30 }
+      ],
+      "Wakad": [
+        { name: "CHIRAYU CHILDREN'S HOSPITAL", lat: 18.5987, lon: 73.7895, id: 31 },
+        { name: "Shree Hospital", lat: 18.6003, lon: 73.7923, id: 32 },
+        { name: "Shree Clinic", lat: 18.5915, lon: 73.7876, id: 33 },
+        { name: "Vishwas Hospital", lat: 18.6028, lon: 73.7859, id: 34 },
+        { name: "Phoenix Hospital", lat: 18.5932, lon: 73.7901, id: 35 }
+      ],
+      "Hinjewadi": [
+        { name: "Ruby Hall Clinic", lat: 18.5820, lon: 73.7496, id: 36 },
+        { name: "Sanjeevani Multispeciality Hospital", lat: 18.5814, lon: 73.7507, id: 37 },
+        { name: "CityCare Medical Center", lat: 18.5840, lon: 73.7500, id: 38 },
+        { name: "LifeTree Hospital", lat: 18.5807, lon: 73.7493, id: 39 },
+        { name: "Kaushalya Hospital", lat: 18.5833, lon: 73.7491, id: 40 }
+      ],
+      "Kharadi": [
+        { name: "Arogyam Health Clinic", lat: 18.5361, lon: 73.9254, id: 41 },
+        { name: "Balaji Hospital", lat: 18.5397, lon: 73.9338, id: 42 },
+        { name: "Manipal Hospital", lat: 18.5304, lon: 73.9193, id: 43 },
+        { name: "Elite Momz", lat: 18.5402, lon: 73.9204, id: 44 },
+        { name: "PMC Hospital Kharadi", lat: 18.5318, lon: 73.9269, id: 45 }
+      ],
+      "Kothrud": [
+        { name: "Deoyani Multi Speciality Hospital", lat: 18.4932, lon: 73.8145, id: 46 },
+        { name: "Kothrud Hospital", lat: 18.4973, lon: 73.8188, id: 47 },
+        { name: "Sahyadri Hospital Kothrud", lat: 18.4938, lon: 73.8100, id: 48 },
+        { name: "Borse Vitalife Hospital", lat: 18.4900, lon: 73.8130, id: 49 },
+        { name: "City Hospital", lat: 18.4950, lon: 73.8155, id: 50 }
+      ],
+      "Bibwewadi": [
+        { name: "Vighnaharata Multispeciality Hospital", lat: 18.4741, lon: 73.8940, id: 51 },
+        { name: "SAHYADRI HOSPITAL", lat: 18.4759, lon: 73.8914, id: 52 },
+        { name: "Premchand Oswal Hospital", lat: 18.4780, lon: 73.8935, id: 53 },
+        { name: "Trimal Hospital", lat: 18.4734, lon: 73.8900, id: 54 },
+        { name: "Chintamani Hospital", lat: 18.4760, lon: 73.8910, id: 55 }
+      ]
+    };
+    // Function to update the hospital options based on location
+    function updateHospitalOptions(location) {
+      const hospitalSelect = document.getElementById('hospitalInput');
+      hospitalSelect.innerHTML = ''; // Clear previous options
+      const hospitals = hospitalsByLocation[location];
+
+      if (hospitals) {
+        hospitals.forEach(hospital => {
+          const option = document.createElement('option');
+          option.value = hospital.name;
+          option.textContent = hospital.name;
+          hospitalSelect.appendChild(option);
+        });
+      }
+    }
+
+    // Handle location change to update hospitals dynamically
+    document.getElementById('locationInput').addEventListener('change', function () {
+      const selectedLocation = this.value;
+      updateHospitalOptions(selectedLocation);
+    });
+
+    // Handle form submission
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const location = document.getElementById('locationInput').value;
+      const hospitalName = document.getElementById('hospitalInput').value;
+
+      const hospitals = hospitalsByLocation[location];
+      const hospital = hospitals.find(h => h.name === hospitalName);
+
+      if (hospital) {
+        // Clear previous markers
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+          }
+        });
+
+        // Center map on the hospital's location
+        map.setView([hospital.lat, hospital.lon], 15);
+
+        // Add marker for the hospital
+        L.marker([hospital.lat, hospital.lon]).addTo(map)
+          .bindPopup(`<b>${hospital.name}</b><br>Location: ${location}<br><a href="/hospitalDetails?id=${hospital.id}" target="_blank">More Info</a>`)
+          .openPopup();
+      }
+    });
+
+    // Initialize with hospitals for the default location (Kondhwa)
+    updateHospitalOptions("Kondhwa");
+  </script>
+</body>
+</html>

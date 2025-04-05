@@ -1,0 +1,2012 @@
+
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lifeshield.com</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body > 
+    <style>
+
+         .loginc{
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background: #d1caca95
+      }
+      .logind{
+        height: 15%;
+        width: 40%;
+        border-radius: 4px;
+        background-color: #3900f6;
+        color: #ffffff;
+        font-family:Teachers;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: capitalize;
+      }
+     
+      .logind button{
+        height: 30%;
+        width: 30%;
+        margin-top: 5%;
+        border-radius: 8px;
+        border:none;
+        font-family:Teachers;
+        font-weight: 800;
+        background-color: #ffffff;
+        transition: 0.3s;
+        
+      }
+      .logind button:hover{
+        background-color: #3900f6;
+        
+      }
+      .logind button a:hover{
+        color: #ffffff;
+        
+      }
+      .logind button a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    transition: 0.3s;
+        
+      }
+     .mp{
+
+        width: 100%;
+       
+        display: flex;
+        justify-content: space-between;
+     }
+     .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 10%;
+     }
+     .mp p{
+         margin-left: 25%;
+     }
+     @media (max-width: 700px){
+        .logind{
+        height: 15%;
+        width: 82%;
+      
+      }
+      .logind button{
+        height: 20%;
+        width: 60%;
+       
+      }
+      .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 50%;
+     }
+     .mp p{
+         font-size: 0.7rem;
+         font-weight: 900;
+     }
+     .mp{
+width: 100%;
+}
+     }
+    
+ *::selection{
+    background-color: #000000;
+    color: #ffffff;
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#loader{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 1s;
+}
+#loader h1{
+   color: transparent;
+   font-family: futura;
+   opacity: 0;
+   font-size: 4vw;
+   background: linear-gradient(to right, #1552F0, #4d8eff);
+   -webkit-background-clip: text;
+   position: absolute;
+   animation-name: loder;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+   
+}
+#loader h1:nth-child(2){
+    animation-delay: 2s;
+}
+#loader h1:nth-child(3){
+    animation-delay: 3s;
+}
+
+@keyframes loder {
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+header {
+   width: 100%;
+   height: 60px;
+   /* background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); */
+   display: flex;
+} 
+#page2{
+   margin-top: 100px;
+  
+}
+#movingtext{
+    white-space: nowrap;
+    overflow-x: auto; 
+}
+#movingtext::-webkit-scrollbar{
+    display: none;
+  
+}
+.con{
+    white-space: nowrap;
+    display: inline-block;
+    animation-name: move;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+   animation-iteration-count: infinite;
+
+}
+#movingtext h1{
+   font-size: 3.3vw;
+   font-family: futura;
+   display: inline-block;
+ 
+}
+#gola{
+     height: 3vw;
+     width: 3vw;
+     border-radius: 50%;
+     margin-left: 1vw;
+     filter: blur(1.5px);
+     margin-right: 1vw;
+     display: inline-block;
+     background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+@keyframes move {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+.kkd{
+    height: 7px;
+    width: 100%;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+.navpart1 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4vw;
+}
+
+.life h1 {
+    color: #0a0880;
+    font-size: 1.5em;
+    font-family: futura ;
+}
+.winning h5 {
+    font-size: 0.6em;
+    margin-left: 2.1%;
+    margin-left: 33px;
+    line-height: 15px;
+    letter-spacing: 1.2px;
+    font-family: poppins Medium;
+    color: #0a0880;
+}
+.winning  {
+   height: 25px;
+   width: 200px;
+   display: flex;
+}
+.navpart2 {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    gap: 15px;
+    margin-left: 17vw;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.7%;
+}
+.navpart2 a{
+    font-family: poppins  Medium;
+    font-size: 1em;
+    color: #000000;
+    z-index:9;
+    padding: 5px;
+    font-size: 15px;
+    border:1.5px solid rgba(74, 98, 255, 0.841);
+    border-radius: 19px;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+#hdn2{
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+}
+#hdn2::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    transition: 0.4s ease-in-out;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+    /* display: block; */
+}
+ #hdn2:hover::after{
+   bottom: 0;
+   z-index: -99;
+} 
+.navpart2 a:hover{
+    color: #ffffff;
+}
+.fillinfo{
+    height: 400px;
+    width: 100%;
+    display: flex;
+   margin-bottom: 50px;
+   justify-content: space-evenly;
+   align-items: center;
+}
+.svg{
+    height: 90%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.infif{
+  height: 90%;
+  width: 50%;
+
+}
+.svg img{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    object-fit: contain;
+}
+.he{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.he h2{
+    font-family: futura;
+    color: blue;
+}.ped{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.ped p{
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}.fil{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+}
+.fil a{
+text-decoration: none;
+padding: 10px;
+text-align: center;
+width: 150px;
+font-family:Elsevier Sans Web ;
+background-color: #000dff;
+color: white;
+border-radius: 10px;
+transition: 0.7s ease-in-out;
+}
+.fil a:hover{
+    background-color: #a69aec45;
+    color: black;
+
+}
+.bar {
+    height: 50px;
+    width: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bar i {
+    display: none;
+}
+.hidden {
+    height: 300px;
+    width: 100%;
+    background-color: #1e44ac;
+    display: flex;
+    gap: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+.hidden a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.page1{
+    height:500px;
+    width: 100vw;
+    display: flex;
+  
+}
+.pagem{
+    height:600px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    
+}
+.leftm{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leftm h1{
+    font-family: futura;
+    font-size: 5vw;
+   
+}
+.leftm p{
+    font-family: futura;
+    
+    font-size: 3vw;
+   
+}
+.leftm span{
+    font-family: futura;
+   color: #1e44ac;
+   
+}
+.rightm{
+    height: 50%;
+    width: 100%;
+margin-bottom: 25px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.rightmimg{
+    height: 80%;
+    width: 90%;
+    margin-bottom: 8vh;
+}
+.rightmimg img{
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+
+}
+.righmti{
+    height:20%;
+    width: 100%;
+}
+.righmti h3{
+    color: #000dff;
+    font-family: futura;
+}
+.righmti{
+    height:20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.righmti p{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #1900bc;
+  font-size: 0.5rem;
+}
+.left {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#input1::placeholder {
+    font-size: 15px; /* Adjust size as needed */
+    color: rgb(10, 34, 216); /* Optional */
+    font-weight: bold; /* Optional */
+    opacity: 1; /* Ensure visibility */
+  }
+  
+.left h1{
+    color: #000000;
+    font-family: futura;
+  font-size: 2vw;
+  margin-left: 5vw;
+}
+.left p{
+    color: #000000;
+    font-family: Elsevier Sans Web;
+    font-size: 1vw;
+    margin-left: 5vw;
+}
+.left span{
+    color: #1e44ac;
+}
+
+.right{
+    height: 100%;
+    width: 40%;
+    
+}
+.right .rightimg{
+   height: 70%;
+   width: 100%;
+}
+.rightimg img{
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+    object-fit: contain;
+    
+}
+.vacvit{
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.vacvit h1{
+ text-align: center;
+ font-family: futura;
+ color: #1100ff;
+ font-size:3rem;
+ margin-left: 3.5vw;
+}
+.vacvit p{
+color: #2e00fd;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-left: 8vw;
+}
+.jsdy2{
+    height: 100px;
+    margin-top: 5vh;
+    width: 60%;
+   border: 2px solid blue;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-right: 13vw;
+   box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+}
+.block{
+    height: 90px;
+    width: 100%;
+    background: linear-gradient(to right, #76A9FF, #1552F0, #0A1F44);
+
+
+    display: flex;
+    border: 1.5px solid black;
+}
+.b1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.endse{
+    height:60px;
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+text-align: center;
+
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+.endse h2{
+    font-family: futura;
+    margin-left: 50px;
+    margin-top: 10px;
+    
+    color: #ffffff;
+}
+.b1 h2{
+    font-family: futura;
+   font-size: 1rem;
+    color: #ffffff;
+}
+
+.page2{
+    height: 300px;
+ 
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.pg-1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-1 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-1 p{
+    padding: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.img1{
+    height: 100%;
+    width: 80%;
+    margin-left: 8vw;
+
+}
+.img1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pg-2{
+    height: 100%;
+    width: 50%;
+   
+}
+.page3{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+}
+.pg-3{
+    height: 100%;
+    width: 50%;
+}
+.img2{
+        height: 100%;
+        width: 80%;
+     
+    
+}
+.img2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 30px;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.pg-4{
+    height: 100%;
+    width: 50%;
+}
+.pg-4 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-4 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.page4{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+
+}
+.pg-5{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-5 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-5 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.pg-6{
+    height: 100%;
+    width: 50%;
+}
+.img3{
+        height: 100%;
+        width: 80%;
+        margin-left: 8vw;
+     
+    
+}
+.img3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.page5{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+
+}
+.pg-7{
+ 
+    width: 50%;
+}
+.img4{
+        height: 100%;
+        width: 80%;
+     margin-left: 2vw;
+    
+}
+#user-new{
+    font-size: 2vw;
+   position: relative;
+   left: 3vw;
+}
+.img4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.pg-8{
+    height: 100%;
+    width: 50%;
+    
+}
+.pg-8 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-8 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ddoc{
+ height: 15vh;
+ width: 100vw;
+ display: flex;
+ margin-top: 25px;
+ justify-content: space-evenly;
+background-color: red;
+margin-bottom: 50px;
+ align-items: center;
+}
+.ddoc h3{
+font-family: futura;
+
+text-transform: capitalize;
+}
+.dow{
+    height: 5vh;
+    width: 15vw;
+    margin-top: 5px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+    border-radius: 5px; gap: 1.5vw;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+
+}
+.dow a{
+   text-decoration: none;
+   color: #000;
+   
+}
+.dow a:hover{
+  
+   color: #0234ff;
+   
+}
+.dr{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.srch{
+    min-height: 120vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sr1{
+    height:300px ;
+    width: 400px;
+    border-radius: 2px;
+    background-color: aliceblue;
+
+    overflow: hidden;
+    
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ transition: 0.3s ease-in-out ;
+}
+.sr1:hover{
+   transform: scale(1.03);
+   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.sr1-1{
+    height: 80%;
+    width:99.8%;
+   
+    overflow: hidden;
+
+}
+.sr1 p{
+  margin-left: 1vw;
+  position: relative;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ margin-left: 2vw;
+ font-size: 2vh;
+}
+.sr1 h3{
+    font-family: futura;
+    font-size: 0.8rem;
+    color: #0138ce;
+    position: relative;
+    right:8vw;
+
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    border: 2px solid rgb(0, 0, 0);
+    
+
+   
+}
+.tab{
+    height: 3.5vh;
+    width: 16vh;
+    background-color: rgb(0, 2, 149);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     text-decoration: none;
+     margin-left: 16vw;
+     margin-bottom: 1.1vh;
+}
+.tab p{
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    right: 8px;
+    
+}
+footer{
+    height: 65vh;
+    width:100vw;
+   background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+
+.fotter{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.fotter .fot1-1  p{
+   font-family:Teachers ;
+}
+.fot1-1{
+    height: 30%;
+    width: 35vh;
+    margin-top: 10vh;
+
+}
+#kk01{
+    margin-top:8%;
+}
+#kk01 h2{
+   color: #fffcfc;
+   font-family: futura;
+   margin-left:15px;
+   margin-bottom: 30px;
+}
+#kk01 i{
+    margin-right: 5%;
+    margin-left:15px;
+}
+.fot1-1 h3{
+    /* opacity: 0.5; */
+    color:  #99aff2;
+}
+.fot1-1 p{
+    /* opacity: 0.5; */
+    color:  #ffffff;
+font-size: 1rem;
+margin-top: 2vh;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fot1-1 img{
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+    padding: 2vw;
+    margin-left: 1vw;
+    object-fit: contain;
+}
+.fot1-1-1{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotter2{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    
+   position: relative;
+   bottom: 50px;
+    justify-content: space-evenly;
+
+    
+}
+.fot2-1{
+    height: 100%;
+   width: 70%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+  
+}
+.fot2-1 .fot2-2 {
+     width: 100%;
+     height: 70%;
+     text-transform: capitalize;
+    
+}
+.fot2-1 .fot2-2  h4{
+     margin-left: 14.8%;
+     font-family: Teachers;
+     color: rgb(254, 254, 254)
+}
+.fot2-1 .fot2-2  h4 a{
+   text-decoration: underline;
+   color: #ccc7efc2;
+}
+.fot2-1 h3{
+    color: #ffffff;
+    font-size: 1rem;
+    margin-right: 8vw;
+     font-family: futura;
+}
+.fot2-2{
+    height: 100%;
+   width:30% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+.fot2-2 a{
+   text-decoration: none;
+   color: #ffffff;
+   font-family: futura;
+   font-size: 0.7rem;
+}
+.jsdy2 h1{
+font-size: 1vw;
+position: relative;
+top: 2px;
+right: 20px;
+
+}
+.div{
+  height: 300px;
+    width: 100vw;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+   
+   
+}
+.div-1{
+ height: 100%;
+width: 60%;
+border-radius: 10px;
+border: 1px solid blue;
+background-color: #cacbd4;
+
+   
+}
+.div-2{
+height: 100%;
+width: 35%;
+border-radius: 10px;
+overflow: hidden;
+background-color: #000dff;
+}
+.div-2 img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+}
+.div-1-h2{
+    width:  70%;
+    height: 20%;
+    display: flex;
+    font-family:Teachers ;
+   justify-content: center;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-left: 2.5%;
+    color:  rgb(42, 42, 209);
+   
+}.divkk{
+    height: 2.5px;
+    width: 200px;
+    margin-top: 7px;
+    margin-right: 15%;
+    background-color: rgb(42, 42, 209);
+    border-radius: 10px;
+}
+.div-1-p{
+    height: 50%;
+    width: 85%;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}
+.sev{
+    height: 100px;
+    width: 100%;
+    margin-top: 2%;
+    
+   
+}
+.sev1{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Teachers;
+    color: #0044ff;
+   
+}
+.sev2{
+    height: 60%;
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family:  poppins Medium;
+   color: #0c1885cd;
+    
+}
+.serv{
+    height:200px;
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.fet01{
+    height: 70%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+ 
+}
+.fet01 i{
+  margin-left: 10px;
+ 
+}
+.fet01 span{
+    height: 70%;
+    width: 100%;
+    font-family: Teachers;
+    font-size: 20px;
+   
+}
+.serv1{
+    height: 100%;
+    width: 20%;
+    border:1px solid rgb(13, 13, 230) ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #aeb5ca81;
+    border-radius: 10px;
+}.f2{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+   
+}
+.f2-1{
+    height: 100%;
+    width: 80%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.f2-1 h4{
+    font-family: poppins Medium;
+    color: #332ada;
+}
+.f2-2{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.f2-2 a i{
+ text-decoration: none;
+ font-size: 25px;
+}
+#num2{
+    font-family: futura;
+    font-size: 1.8vw;
+  position: relative;
+  top: 1.5vh;
+}
+.vaxsrc{
+    height:12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    display: flex;
+    flex-direction: column;
+}
+.vaxsrc h2{
+   font-family: futura;
+}
+#input1{
+    height: 7vh;
+    width:40vw;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+}
+#button{
+    height: 7vh;
+    width:10vw;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #2500f5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.dropdown-content{
+    position: absolute;
+    background-color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 35%;
+    height: 15%;
+    color: #0404f0;
+    border: 1px solid #fffbfb;
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;  
+    overflow: auto;
+    display: none;
+    z-index: 1;
+    margin-top: 19%;
+    margin-right: 15%;
+    padding-bottom: 10px;
+}  
+.dropdown-content::-webkit-scrollbar{
+    display: none;
+}
+.fot2-2 h4{
+    
+    position: relative;
+    right: 10px;
+}
+.dropdown-content div {
+    padding: 11px;
+    font-weight: 500;
+    color: #000000;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.dropdown-content div:hover {
+    background-color: #0612fe;
+    color: #ffffff;
+}
+#input1::-webkit-appearance{
+    display: none;
+}
+.hdnwin{
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    margin-top: 5px;
+    border-radius: 25px;
+    border: 2px solid rgb(251, 0, 38);
+}
+@media (max-width: 500px) {
+.serv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    height: 100%;
+}
+.serv1{
+    width: 78%;
+   min-height:50%;
+}
+.sev2{
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.endse{
+    font-size: 2.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .fillinfo{
+        display: flex;
+        flex-direction: column;
+    }
+.svg{
+    height: 100%;
+
+    padding: 20px;
+    width: 100%;
+}
+
+.infif{
+    height: 100%;
+    width: 100%;
+}
+.infif h2{
+    font-size: 16px;
+    position: relative;
+    right: 43.5px;
+}
+.infif p{
+    font-size: 12px;
+    padding: 20px;
+
+}
+.fil{
+    margin-left: 20px;
+    height: 15px;
+    margin-top: 20px;
+
+}
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    
+.div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 5%;
+    
+   
+}
+.div-1-p{
+    font-size: 11px;
+}
+.div-2{
+    display: none;
+}
+.div-1-h2 h2{ 
+    font-size: 13px;
+
+}
+.div-1{
+    height: 100%;
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid blue;
+   background-color: #cacbd4;
+   
+ 
+   }
+   .divkk{
+    display: none;
+   }
+    .hdnwin{
+       display: none;
+    }
+    /* .dropdown-content{
+        margin-top: 65%;
+        margin-right: 15%;
+        width: 65%;
+        height: 65%;
+
+        
+    }   */
+    .right{
+        display: none;
+    }
+    #input1{
+        height: 4vh;
+        width:55vw;
+
+        
+    }
+    #button{
+        height: 4vh;
+        width:15vw;
+       
+    }
+    .jsdy2 h1{
+      background-color: #0044ff;
+        }
+    #num2{
+        font-size: 2vw;
+        background-color: #0044ff;
+    } 
+    .fot1-1 p{
+      margin-left: 4vw;
+      font-size: 0.7rem;
+    }
+    .fot1-1-1 {
+        padding: 4vw;
+    }
+    .fot1-1 h3{
+        /* opacity: 0.5; */
+        font-size: 0.7rem;
+        margin-left: 2vh;
+        color:  #99aff2;}
+    .fot2-2{
+        gap: 2vh;
+    }
+    .fot2-1 h3{
+        color: #ffffff;
+        font-size: 0.5rem;
+        margin-right: 8vw;
+        padding: 25px;
+         font-family: futura;
+    }
+    .fot2-2 a{
+        /* text-decoration: none; */
+        color: #ffffff;
+        font-family: futura;
+        font-size: 0.4rem;
+     }
+    .fot2-2 a:hover{
+      text-decoration: underline white;
+
+     }
+    .navpart1 h1, .navpart1 h5{
+        font-size: 3vw;
+    }
+    .navpart2 a {
+        display: none;
+    }
+    .bar i {
+        display: block;
+        position: relative;
+        left: 80px;
+        font-size: 25px;
+        bottom: 12px;
+    }
+    .hidden a {
+        font-size: 2vw;
+    }
+    .page1{
+        display: none;
+    }
+    .pagem{
+        height:650px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .leftm{
+        height: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .leftm h1{
+        font-family: futura;
+        font-size: 5vw;
+    margin-bottom: 2vh;
+        margin-left: 4vw;
+       
+    }
+    .leftm p{
+        font-family: futura;
+        font-size: 3vw;
+   
+        margin-left: 4vw;
+    
+    }
+    .leftm span{
+        font-family: futura;
+       color: #0044ff;
+       
+    }
+    .jsdy{
+        height: 70px;
+        margin-top: 2vh;
+       width: 90vw;
+       border: 2px solid blue;
+       border-radius: 5px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+    }
+    .jsdy2 h1{
+        font-size: 35px;
+      margin-top: 11px;
+    }
+   
+    .img{
+        height: 90%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    .img2 img{
+        height: 100%;
+        width: 100%;
+        margin-bottom: 5vh;
+       
+    }
+    .b1 h2{
+        font-family: futura;
+       font-size: 2vw;
+       margin-left: 3vw;
+        color: #ffffff;
+    }
+    .page2, .page3, .page4, .page5 {
+        flex-direction: column; 
+        height: auto; 
+    }
+    .pg-1, .pg-2,
+    .pg-3, .pg-4,
+    .pg-5, .pg-6,
+    .pg-7, .pg-8 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img1, .img2, .img3, .img4 {
+        width: 90%; 
+        margin-left: 0;
+    }
+
+    .pg-1 p, .pg-4 p, .pg-5 p, .pg-8 p {
+       font-size: 4vw;     
+    }
+    .pg-1 h2, .pg-4 h2, .pg-5 h2, .pg-8 h2 {
+        font-size: 0.9em; 
+        text-align: center;
+        margin-left: 0;
+    }
+    .vaxsrc h2{
+        font-family: futura;
+        font-size: 0.9em; 
+     }
+.img2 img{
+    display: none;
+   
+} 
+.img4 img{
+    display: none;
+} 
+     .img1 img,  .img3 img{
+        height: auto; 
+        object-fit: contain;
+        object-position: center;
+        border-radius: 15px;
+    }
+    .srch{
+       gap: 20px;
+     padding: 35px;
+    }
+    .sr1-1{
+        height: 65%;
+        width: 90%;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .sr1-1{
+    height: 55%;
+    width: 90%;
+    
+    
+}
+    .sr1 h3{
+  position: relative;
+  right: 22vw;
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    border: 2px solid blue;
+    object-fit:cover;
+    border-radius: 8px;
+   
+}
+.sr1 p{
+  
+   font-size: 1.7vh;
+  }
+.tab{
+    margin-top: 18px;
+    margin-right: 15vw
+} .ddoc h3{
+    font-size: 3.8vw;
+}
+    .dow{
+        height: 4vh;
+        width: 35vw;
+       margin-top: 20px
+    
+    }
+    #user-new{
+        display: none
+    }
+
+    .winning h5 {
+        font-size: 0.4em;
+      position: relative;
+      right: 30px;
+      
+    }
+    .bar i{
+       margin-right: 35px
+    }
+    .fot2-2 h4{
+        font-size: 2vw;
+        position: relative;
+        right: 20px;
+    }
+    .fot1-1 h2{
+        font-size: 3vw;
+        position: relative;
+        top: 20px;
+    }
+    };
+@media (max-width: 700px) {
+    .navpart2 a {
+        font-family: sans-serif;
+        font-size: 0.8em;
+        margin-bottom: 2vw;
+    }
+
+}
+
+    </style>
+   <!-- <div class="loginc">
+    <div class="logind">
+        <div class="mp"><p>register for age based vaccine  recommendations</p><i class="fa-solid fa-xmark" id="remove" style="color: #ffffff;"></i></div>
+      <button><a href="http://localhost:3002/">REGISTER/ SIGN-IN</a></button>
+    </div>
+   </div> -->
+   <!-- <div id="loader">
+    <h1>HEALTHY</h1>
+           
+    <h1>STRONG</h1>
+          
+    <h1>READY</h1>
+          
+   </div> -->
+    <main id="main">
+   <header>
+    <div class="navpart1">
+        <div class="life"><h1><i id="remove"  class="fa-solid fa-syringe" style="color: #09125f;"></i> LifeShield</h1></div>
+        <div class="winning"><h5>winning over disease</h5></div>
+    </div>
+    <div class="navpart2">
+        <a id="hdn2"  href="index.html">HOME</a>
+        <a id="hdn2"  href="services.html">SERVICES</a>
+        <a id="hdn2"  href="FAQS.HTML">FAQ</a>
+        <a id="hdn2"  href="/map">SEARCH NEAR VACCINE CENTER</a>
+        <a id="hdn2"   href="/signin">Sign In</a>
+      
+        <a  href="/signup" id="hdn2">REGISTER</a>
+        <% if (locals.user) { %>
+            <a id="hdn2"   href="/profile">Profile</a>
+        <% } %>
+        <!-- <i  id="user-new" class="fa-solid fa-user" style="color: #ffffff;"></i> -->
+        <div class="bar">
+            <i id="bar" class="fa-solid fa-bars" style="color: #081085;"></i>
+        </div>
+    </div>
+   </header>
+   <div class="kkd"></div>
+   <div id="hidden" class="hidden">
+    <a id="hdn2"  href="index.html">HOME</a>
+    <a id="hdn2"  href="services.html">SERVICES</a>
+    <a id="hdn2"  href="FAQS.HTML">FAQ</a>
+    <a id="hdn2"  href="/map">SEARCH NEAR VACCINE CENTER</a>
+    <a id="hdn2"   href="/signin">Sign In</a>
+  
+    <a  href="/signup" id="hdn2">REGISTER</a>
+    <% if (locals.user) { %>
+        <a id="hdn2"   href="/profile">Profile</a>
+    <% } %>="hdn2"  href="map.html">SEARCH NEAR VACCINE CENTER</a>
+    
+   </div>
+   <div class="pagem">
+    <div id="leftm" class="leftm">
+        <h1> <spa> One </span>small shot for you, one giant leap for community health.
+            <span>Get vaccinated!</span></h1> <p> <b>"Your Health, Your Responsibility: Stay Updated with Vaccination Tracker"  
+            "Track, Protect, and Empower Yourself—Ensure You're Up-to-Date on Your Vaccines!"</b></p>
+            <div class="jsdy">
+                <h1 style="font-size: 11px; position: relative; top:10px;">Large Number of Children 6-15 Still Unvaccinated</h1><br>
+                <h1  style="font-size: 18px; "  id="num"></h1>
+            </div>
+    </div>
+    <div class="rightm">
+        <div class="rightmimg">
+            <img src="image/file.png" alt="">
+            <div class="righmti">
+             <h3>Let’s Get
+                Vaccinated</h3>
+                <p>"Get Vaccinated, Empower Your Future, Protect Your Community!"</p>
+            </div>
+        </div>
+    </div>
+   </div>
+   <div class="page1">
+    <div class="left">
+        <h1> <span> One </span>small shot for you, one giant leap for community health.
+            <span>Get vaccinated!</span></h1> <p> <b>"Your Health, Your Responsibility: Stay Updated with Vaccination Tracker"  
+            "Track, Protect, and Empower Yourself—Ensure You're Up-to-Date on Your <span>Vaccines!"</span></b></p><br>
+            <div class="jsdy2">
+                <h1 >Large Number of Children 6-15 Still Unvaccinated</h1><br>
+                <h  id="num2"></h1>
+            </div>
+    </div>
+    <div class="right">
+        <div class="rightimg"><img src="image/file.png" alt=""></div>
+        <div class="vacvit">
+            <h1>Let’s Get
+                Vaccinated</h1>
+                <p>"Get Vaccinated, Empower Your Future, Protect Your Community!"</p>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="block">
+    <div class="b1"><h2>Secure and Easy to use platfrom</h2></div>
+    <divid id="b2" class="b1"><h2>Comprehensive support for all your vaccination needs.</h2></div>
+</div>
+<!-- <div  id="page1" class="page2">
+    <div class="pg-1"><h2>Why vaccines are Important ?</h2>
+       <p>Vaccines are not just important they are the very reason humanity has survived and thrived in the face of pandemics, plagues, and deadly diseases for centuries. In a world where misinformation spreads at the speed of a tweet, and fear-mongering has replaced scientific fact, refusing to vaccinate is not only a personal choice; it is a reckless act of negligence with profound consequences for public health. The denial of science the refusal to accept the overwhelming, irrefutable evidence that vaccines are safe and effective is not just dangerous; it’s criminal. If you still doubt the power of vaccines, it’s time to confront the harsh reality: your skepticism doesn’t just harm you it harms everyone. Vaccines don’t just protect the individual who gets vaccinated, they protect entire communities through a concept called herd immunity. So, let's be blunt: if you are still questioning the power of vaccines, you are choosing ignorance over science, selfishness over responsibility, and risk over safety. And the next time you think about questioning the safety of vaccines, ask yourself: who are you really putting at risk? Because the truth is, your refusal could be the very thing that sparks the next outbreak . minimied this data in same lang make menaing full </p>
+    </div>
+    <div class="pg-2">
+        <div class="img1">
+            <img src="WhatsApp Image 2025-01-07 at 10.40.37_13861532.jpg" alt="">
+        </div>
+    </div>
+</div>
+<div class="page3">
+    <div class="pg-3"><div class="img2"><img src="free_covid_precaution_dose.svg" alt=""></div></div>
+    <div class="pg-4"><h2>Myths and facts:</h2> <p>Vaccines are often surrounded by wild stories, but the truth is simple and reassuring. For example some people believe vaccines cause 
+        autism. This fear started from one fake study that was proven wrong 
+        years ago. Even though scientists have shown there’s no link, the myth still floats around. Then there’s the idea that falling sick naturally is 
+        better than taking a vaccine. But why would you want to suffer through a dangerous disease when vaccines can protect you without the pain? 
+        Vaccines are like a safety net for your health, ready to catch you before you fall. And the strangest myth of all? That vaccines contain 
+        microchips to track people. That’s complete nonsense! Vaccines don’t have secret devices they’re just tools to protect lives and keep your immune system strong. What’s even more amazing is that vaccines 
+        don’t just protect you. They protect your loved ones, your neighbors, and even strangers. It’s like creating a protective circle around 
+        everyone. So, in a world full of myths, let’s stick to the facts: vaccines are safe, effective, and they save lives
+        </p>
+    </div>
+</div>
+<div class="page4">
+    <div class="pg-5"><h2>Negligence of vaccines in INDIA:</h2><p>Vaccine negligence in India is a ticking time bomb, and its consequences are deadly.
+         Despite the proven safety and effectiveness of vaccines, rising misinformation and lack of awareness are causing more people to refuse or delay immunization, putting everyone at risk. 
+         When vaccination rates drop, diseases like polio and measles can return, putting vulnerable populations— children, the elderly, and the immunocompromised—at severe risk. This isn’t just a personal choice; it’s a public health threat. Our communities, our children, our future—all are at stake. It's time to stop ignoring the science, fight back against myths, and make sure every person gets vaccinated. The cost of negligence is too high, and we cannot afford to lose the progress we’ve made. Vaccines save lives—don’t let fear and ignorance take them away. </p></div>
+    <div class="pg-6">
+        <div class="img3"><img src="Children_Vaccination.svg" alt=""></div>
+    </div>
+</div>
+<div class="page5">
+    <div class="pg-7"><div class="img4"><img src="flat-hand-drawn-doctor-injecting-vaccine-patient_23-2148855493.jpg" alt=""></div></div>
+   <div class="pg-8"><h2>Currents Affairs : </h2><p>India’s vaccination story in 2023 is a mix of challenges and hope. Over 1.6 million children missed important vaccines like DPT and 
+    measles, and another 2 million didn’t get a single vaccine—these kids are called “zero-dose” children. Behind these numbers are families who want their children to grow up healthy but haven’t had the chance to get them vaccinated. he good news is that efforts like Mission Indradhanush and its newer version, IMI 5.0, are changing the story. These programs have already helped vaccinate millions of children. It’s not just about giving vaccines; it’s about giving every child a fair chance at life. Vaccination is more than just a
+     health drive—it’s about hope and a promise for a better future. By making vaccines available and spreading awareness, we can 
+     ensure every child, no matter where they are, gets the protection they need. Together, we can build a healthier, happier India where no child is left behind. </p></div>
+</div> -->
+<!----01-------------------------------------------------------------------------------------------01--------------------------------------------------->
+<div class="div">
+    <div class="div-1">
+        <div class="div-1-h2">
+            <h2>Why vaccines are Important?</h2>
+            <div class="divkk"></div>
+        </div>
+        <div class="div-1-p">
+            <p>Vaccines are not just important they are the very reason humanity has survived and thrived in the face of pandemics, plagues, and deadly diseases for centuries. In a world where misinformation spreads at the speed of a tweet, and fear-mongering has replaced scientific fact, refusing to vaccinate is not only a personal choice; it is a reckless act of negligence with profound consequences for public health. The denial of science the refusal to accept the overwhelming, irrefutable evidence that vaccines are safe and effective is not just dangerous; it’s criminal. If you still doubt the power of vaccines, it’s time to confront the harsh reality: your skepticism doesn’t just harm you it harms everyone. 
+        </div>
+        </div>
+   <div class="div-2"><img src="image/vacc01.webp" alt="img1"></div>
+
+</div>
+<!-----02--------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="div">
+    <div class="div-2"><img src="image/vacci03.jpg" alt="img1"></div>
+    <div class="div-1">
+        <div class="div-1-h2">
+            <h2>Myths and facts:</h2>
+            <div class="divkk"></div>
+        </div>
+        <div class="div-1-p">
+            <p>Vaccines are often surrounded by wild stories, but the truth is simple and reassuring. For example some people believe vaccines cause 
+                autism. This fear started from one fake study that was proven wrong 
+                years ago. Even though scientists have shown there’s no link, the myth still floats around. Then there’s the idea that falling sick naturally is 
+                better than taking a vaccine. But why would you want to suffer through a dangerous disease when vaccines can protect you without the pain? 
+                Vaccines are like a safety net for your health, ready to catch you before you fall. And the strangest myth of all? That vaccines contain 
+                microchips to track people.</p>
+        </div>
+        </div>
+
+</div>
+<!--03------------------------------------------------------------------------------------------------>
+<div class="div">
+    <div class="div-1">
+        <div class="div-1-h2">
+            <h2>Negligence of vaccines in INDIA:</h2>
+            <div class="divkk"></div>
+        </div>
+        <div class="div-1-p"><p>
+            Vaccine negligence in India is a ticking time bomb, and its consequences are deadly.
+            Despite the proven safety and effectiveness of vaccines, rising misinformation and lack of awareness are causing more people to refuse or delay immunization, putting everyone at risk. 
+            When vaccination rates drop, diseases like polio and measles can return, putting vulnerable populations— children, the elderly, and the immunocompromised—at severe risk. This isn’t just a personal choice; it’s a public health threat. Our communities, our children, our future—all are at stake.</p>
+        </div>
+        </div>
+   <div class="div-2"><img src="image/vacc02.jpeg" alt="img1"></div>
+
+</div>
+<!--04------------------------------------------------------------------------------------------------->
+<div class="div">
+    <div class="div-2"><img src="image/vacc0.jpg" alt="img1"></div>
+    <div class="div-1">
+        <div class="div-1-h2">
+            <h2>Currents Affairs : </h2>
+            <div class="divkk"></div>
+        </div>
+        <div class="div-1-p">
+            <p>India’s vaccination story in 2023 is a mix of challenges and hope. Over 1.6 million children missed important vaccines like DPT and 
+                measles, and another 2 million didn’t get a single vaccine—these kids are called “zero-dose” children. Behind these numbers are families who want their children to grow up healthy but haven’t had the chance to get them vaccinated. he good news is that efforts like Mission Indradhanush and its newer version, IMI 5.0, are changing the story. These programs have already helped vaccinate millions of children. It’s not just about giving vaccines; it’s about giving every child a fair chance at life. Vaccination is more than just a
+                 health drive—it’s about hope and a promise for a better future.</p>
+        </div>
+        </div>
+</div>
+<div class="sev">
+    <div class="sev1"><h2>Lifeshield Services </h2></div>
+    <div class="sev2"><h1> See our Lifeshield Vaccination Services</h1></div>
+</div>
+
+<!-----SERVICES---------------------------------------------------------------------------------------------------------->
+<div class="serv">
+    <div class="serv1">
+        <div class="fet01"><span> Get Age based  Vaccines Reminders on your Email  <i class="fa-solid fa-envelope"></i></span></div>
+       <div class="f2">
+        <div class="f2-1"><h4> Register And get Reminders</h4>
+        </div>
+        <div class="f2-2">
+            <a href="http://localhost:3002/"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+       </div>
+    </div>
+    <div class="serv1">  
+        <div class="fet01"><span>Up To Date Information  About The  Vaccine  <i class="fa-solid fa-syringe"></i></span> </div>
+        <div class="f2">
+            <div class="f2-1"><h4>Search And Get Info</h4></div>
+            <div class="f2-2">
+                <a href="#input1"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+           </div>
+    </div>
+    <div class="serv1">  <div class="fet01">
+        <span> Search Near By Vaccine Center And get Detailes About The Hospitals<i class="fa-solid fa-location-dot"></i></span> </div>
+        <div class="f2">
+            <div class="f2-1"> <h4> Search And Get Details</h4></div>
+            <div class="f2-2"> 
+                <a href="map.html"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+           </div>
+    </div>
+    <div class="serv1">  
+        <div class="fet01"><span> Add your Vaccines History And Donwload The pdf <i class="fa-solid fa-arrows-turn-to-dots"></i></span></div>
+        <div class="f2">
+            <div class="f2-1"><h4>Add Your  vaccines History</h4></div>
+            <div class="f2-2">
+                <a href="vaccinehis.html"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+           </div>
+    </div>
+</div>
+<div id="page2">
+    <div id="movingtext">
+        <div class="con">
+            <h1>HEALTHY</h1>
+            <div id="gola"></div>
+            <h1>STRONG</h1>
+            <div id="gola"></div>
+            <h1>READY</h1>
+            <div id="gola"></div>
+        </div>
+        <div class="con">
+            <h1>HEALTHY</h1>
+            <div id="gola"></div>
+            <h1>STRONG</h1>
+            <div id="gola"></div>
+            <h1>READY</h1>
+            <div id="gola"></div>
+        </div>
+        <div class="con">
+            <h1>HEALTHY</h1>
+            <div id="gola"></div>
+            <h1>STRONG</h1>
+            <div id="gola"></div>
+            <h1>READY</h1>
+            <div id="gola"></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="endse"><h2>Vaccination Schedule: Government & Non-Government Hospitals
+</h2></div>
+<div class="ddoc">
+    <div class="dr">
+        <h3  style="font-family:Elsevier Sans Web ;" >Government Vaccination Schedule by Age Group</h3>
+    <div class="dow"><a href="dowload.jpg" download="dowload.jpg">Dowload.Pdf </a> <i class="fa-solid fa-file-pdf" style="color: #5735ca;"></i></div>
+    </div>
+    <div class="dr">
+        <h3  style="font-family:Elsevier Sans Web ;" >Vaccination Schedule for Non-Government Hospitals</h3>
+    <div class="dow"><a href="Simplified_Immunisation_Schedule.pdf" download="Simplified_Immunisation_Schedule.pdf">Dowload.Pdf </a> <i class="fa-solid fa-file-pdf" style="color: #5735ca;"></i></div>
+    </div>
+ 
+</div>
+<div class="vaxsrc">
+    <div class="srt">
+        <h2  style="font-family: Poppins Medium; color: blue;">Here are a few essential vaccine</h2>
+    </div>
+    <div><input id="input1" type="text" placeholder=" SEARCH VACCINE">  <button id="button">Search</button></div>
+        <div id="dropdown2" class="dropdown-content">
+            <div onclick="selectOption('dptw')">dptw</div>
+            <div onclick="selectOption('influenza')">influenza</div>
+            <div onclick="selectOption('mmr+opv')">mmr+opr</div>
+            <div onclick="selectOption('typhoid')">typhoid</div>
+            <div onclick="selectOption('cervicalcancer')">cervical cancer</div>
+            <div onclick="selectOption('dap/td')">dap/td</div>
+            <div onclick="selectOption('Rotavirusvaccine')">Rotavirusvaccine</div>
+            <div onclick="selectOption('Haemophilus')">Haemophilus, vaccine</div>
+            <div onclick="selectOption('Pneumococcal')">Pneumococcal  vaccine</div>
+            <div onclick="selectOption('Rubella')">Rubella</div>
+            <div onclick="selectOption('Varicella')">Varicella vaccine  </div>
+            <div onclick="selectOption('MMR')">MMR Vaccine (Measles, Mumps, and Rubella)</div>
+            <div onclick="selectOption('BCG Vaccine')">BCG Vaccine</div>
+            <div onclick="selectOption('OPV')">OPV Vaccine</div>
+           </div>
+            </div>
+</div>
+<div class="srch">
+    <div     class="sr1"> <div class="sr1-1"><img src="dtpa1.jpg" alt=""></div><h3> DTPw/DTPa </h3><p>DTPw and DTPa vaccines protect against diphtheria, tetanus, and whooping cough.</p><a href="dptw.html"><div class="tab"><p>Click for more</p></div></a></div>
+    <div   class="sr1"> <div class="sr1-1"><img src="flu1.webp" alt=""></div><h3> influenza</h3><p> The influenza vaccine protects against the flu, a contagious respiratory illness. It is updated annually to cover different strains of the virus.</p><a href="influ.html"><div class="tab"><p>Click for more</p></div></a></div>
+    <div   class="sr1"> <div class="sr1-1"><img src="mmr2.jpg" alt=""></div><h3>MMR+ OPV</h3><p>MMR+OPV is a combination vaccine that protects against measles, mumps, rubella, and polio. </p><a href=""><div class="tab"><p>Click for more</p></div></a></div>
+    <div   class="sr1"> <div class="sr1-1"><img src="t1.jpg" alt=""></div><h3>Typhoid </h3><p>The typhoid vaccine protects against typhoid fever, a bacterial infection caused by Salmonella typhi.</p><a href="tyhoid.html"><div class="tab"><p>Click for more</p></div></a></div>
+    <div  class="sr1"> <div class="sr1-1"><img src="crv1.jpg" alt=""></div><h3>Cervical cancer</h3><p>The HPV vaccine protects against cancer-causing strains and is recommended for both girls and boys, ideally before sexual activity.</p><a href="cervicalcancer.html"><div class="tab"><p>Click for more</p></div></a></div>
+    <div   class="sr1"> <div class="sr1-1"><img src="bcg1.jpg" alt=""></div><h3>BCG Vaccine</h3><p>The BCG vaccine protects against **tuberculosis (TB)** and is mainly given to infants to prevent severe TB forms.</p><a href="BCG.html"><div class="tab"><p>Click for more</p></div></a></div>
+</div>
+<div class="fillinfo">
+    <div class="svg"><img src="share_illustration_final.svg" alt=""></div>
+    <div class="infif">
+        <div class="he"><h2>Share Your Vaccination Status</h2></div>
+        <div class="ped"><p>Be a Fighter!Share your vaccination status and let us know which diseases are a concern in your area. Your input helps us spread awareness and improve healthcare support.</p></div>
+        <div class="fil"><a href="status.html">Share your Status</a></div>
+    </div>
+</div>
+<footer>
+    <div class="fotter">
+        <div class="fot1-1"><h3>VACCINATION SERVICES</h3> <p>Up to date info about vaccine</p>
+            <p>Age based reminders</p>
+            <p>vaccine history</p>
+            <p>slot booking</p></div>
+        <div class="fot1-1"><h3>CONTACTS US</h3> <p>Helpline: +91-11-23978046 (Toll Free - 1075 ) </p>
+            <p>Technical Helpline: 7774025744</p></div>
+        <div class="fot1-1" id="kk01"><h2><i id="remove"  class="fa-solid fa-syringe" style="color: #ffffff;"></i>Lifeshield.com</h2>
+            <div class="fot1-1-1"> <a href=""></a><i class="fa-regular fa-envelope" style="color: #ffffff;"></i> 
+                <a href=""><i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a> 
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-sm" style="color: #ffffff;"></i></a>
+                <a href=""><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></div></a></div>
+    </div>
+    <div class="auth1"></div>
+    <!-- <div class="auth"><h5>this platform has been carefully assessed to ensure compliance with medical and operational standards necessary for effective vaccination management.Authorized by: Dr. Raj Ganacharya M.D. (Pediatics)Consulting Pediatrician and neonatologist <a href="auth.html">know more</a></h2></div> -->
+    <div class="fotter2"> 
+ <div class="fot2-1"><div class="fot2-2"><h4>this platform has been carefully assessed to ensure compliance with medical and operational standards necessary for effective vaccination management.Authorized by:Dr. Raj Ganacharya M.D. (Pediatics) Consulting Pediatrician and neonatologist <a href="auth.html">know more...</a></h4></div>
+    <h3>All rights Reserved © LifeShield, 2024 & This Website is Design by Team ASEAP</h3></div>
+ <div class="fot2-2"><a href="">Terms of service</a><a href="privacyandpolicy.html">privacy policy</a></div>
+    </div>
+</footer>
+</main> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="api.js"></script>
+     <script src="mongo.js"></script>
+    <script>
+        const remove = document.getElementById('remove')
+        const loginc = document.querySelector('.loginc')
+        console.log(loginc)
+      remove.addEventListener('click',function(e){
+        loginc.style.display = 'none';
+      })
+
+      gsap.from(".endse h2", {
+   x: -50,         // Move from left
+    opacity: 0,     // Start invisible
+    duration: 2,  // Each word takes 0.6s
+    stagger: 0.3,   // Delay between each word
+    ease: "power2.out"
+});
+
+setTimeout(function(){
+    const loader= document.getElementById("loader")
+    loader.style.top ="-100%"
+},3700)
+    </script>
+</body>
+</html>

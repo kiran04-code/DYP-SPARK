@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Hospital Details</title>
+  <style>
+      *::selection{
+    background-color: #000000;
+    color: #ffffff;
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+.m{
+    height: 30px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+    .m h1{
+      color: #2407ff;
+      font-family: futura;
+      
+    }
+
+    #hospitalDetails {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgb(3, 1, 65);
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    #hospitalDetails h2 {
+      color: #007bff;
+      margin-bottom: 10px;
+      font-family: Teachers;
+    }
+
+    #hospitalDetails p {
+      margin: 5px 0;
+      font-family: Teachers;
+    }
+    #hospitalDetails button {
+       height: 25px;
+       width: 200px;
+       border: none;
+       border-radius: 5px;
+        
+       font-family: Teachers;
+       background-color: #1900ff;
+       color: #ffffff;
+    }
+    
+    .dj{
+        margin-top: 5%;
+        height: 400px;
+        width: 100%;
+    } 
+   .kk{
+        margin-top: 10px;
+      background-color: red;
+   }
+   @media (max-width: 500px){
+    #hospitalDetails button {
+    margin-top: 20px;
+    }
+   }
+
+   
+   .loginc{
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background: #d1caca95
+      }
+      .logind{
+        height: 15%;
+        width: 40%;
+        border-radius: 4px;
+        background-color: #3900f6;
+        color: #ffffff;
+        font-family:Teachers;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: capitalize;
+      }
+     
+      .logind button{
+        height: 30%;
+        width: 30%;
+        margin-top: 5%;
+        border-radius: 8px;
+        border:none;
+        font-family:Teachers;
+        font-weight: 800;
+        background-color: #ffffff;
+        transition: 0.3s;
+        
+      }
+      .logind button:hover{
+        background-color: #3900f6;
+        
+      }
+      .logind button a:hover{
+        color: #ffffff;
+        
+      }
+      .logind button a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 800;
+    transition: 0.3s;
+        
+      }
+     .mp{
+
+        width: 100%;
+       
+        display: flex;
+        justify-content: space-between;
+     }
+     .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 10%;
+     }
+     .mp p{
+         margin-left: 25%;
+     }
+     @media (max-width: 700px){
+        .logind{
+        height: 15%;
+        width: 82%;
+      
+      }
+      .logind button{
+        height: 20%;
+        width: 60%;
+       
+      }
+      .mp i{
+        margin-right:2%;
+        position: relative;
+        bottom: 50%;
+     }
+     .mp p{
+         font-size: 0.7rem;
+         font-weight: 900;
+     }
+     .mp{
+width: 100%;
+}
+     }
+    
+ *::selection{
+    background-color: #000000;
+    color: #ffffff;
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#loader{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 1s;
+}
+#loader h1{
+   color: transparent;
+   font-family: futura;
+   opacity: 0;
+   font-size: 4vw;
+   background: linear-gradient(to right, #1552F0, #4d8eff);
+   -webkit-background-clip: text;
+   position: absolute;
+   animation-name: loder;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+   
+}
+#loader h1:nth-child(2){
+    animation-delay: 2s;
+}
+#loader h1:nth-child(3){
+    animation-delay: 3s;
+}
+
+@keyframes loder {
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+header {
+   width: 100%;
+   height: 60px;
+   /* background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); */
+   display: flex;
+} 
+#page2{
+   margin-top: 100px;
+  
+}
+#movingtext{
+    white-space: nowrap;
+    overflow-x: auto; 
+}
+#movingtext::-webkit-scrollbar{
+    display: none;
+  
+}
+.con{
+    white-space: nowrap;
+    display: inline-block;
+    animation-name: move;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+   animation-iteration-count: infinite;
+
+}
+#movingtext h1{
+   font-size: 3.3vw;
+   font-family: futura;
+   display: inline-block;
+ 
+}
+#gola{
+     height: 3vw;
+     width: 3vw;
+     border-radius: 50%;
+     margin-left: 1vw;
+     filter: blur(1.5px);
+     margin-right: 1vw;
+     display: inline-block;
+     background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+@keyframes move {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+.kkd{
+    height: 7px;
+    width: 100%;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF); 
+}
+.navpart1 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4vw;
+}
+
+.life h1 {
+    color: #0a0880;
+    font-size: 1.5em;
+    font-family: futura ;
+}
+.winning h5 {
+    font-size: 0.6em;
+    margin-left: 2.1%;
+    margin-left: 33px;
+    line-height: 15px;
+    letter-spacing: 1.2px;
+    font-family: poppins Medium;
+    color: #0a0880;
+}
+.winning  {
+   height: 25px;
+   width: 200px;
+   display: flex;
+}
+.navpart2 {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    gap: 15px;
+    margin-left: 17vw;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.7%;
+}
+.navpart2 a{
+    font-family: poppins  Medium;
+    font-size: 1em;
+    color: #000000;
+    z-index:9;
+    padding: 5px;
+    font-size: 15px;
+    border:1.5px solid rgba(74, 98, 255, 0.841);
+    border-radius: 19px;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+#hdn2{
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+}
+#hdn2::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    transition: 0.4s ease-in-out;
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+    /* display: block; */
+}
+ #hdn2:hover::after{
+   bottom: 0;
+   z-index: -99;
+} 
+.navpart2 a:hover{
+    color: #ffffff;
+}
+.fillinfo{
+    height: 400px;
+    width: 100%;
+    display: flex;
+   margin-bottom: 50px;
+   justify-content: space-evenly;
+   align-items: center;
+}
+.svg{
+    height: 90%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.infif{
+  height: 90%;
+  width: 50%;
+
+}
+.svg img{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    object-fit: contain;
+}
+.he{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.he h2{
+    font-family: futura;
+    color: blue;
+}.ped{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.ped p{
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}.fil{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+}
+.fil a{
+text-decoration: none;
+padding: 10px;
+text-align: center;
+width: 150px;
+font-family:Elsevier Sans Web ;
+background-color: #000dff;
+color: white;
+border-radius: 10px;
+transition: 0.7s ease-in-out;
+}
+.fil a:hover{
+    background-color: #a69aec45;
+    color: black;
+
+}
+.bar {
+    height: 50px;
+    width: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bar i {
+    display: none;
+}
+.hidden {
+    height: 300px;
+    width: 100%;
+    background-color: #1e44ac;
+    display: flex;
+    gap: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+.hidden a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.page1{
+    height:500px;
+    width: 100vw;
+    display: flex;
+  
+}
+.pagem{
+    height:600px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    
+}
+.leftm{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leftm h1{
+    font-family: futura;
+    font-size: 5vw;
+   
+}
+.leftm p{
+    font-family: futura;
+    
+    font-size: 3vw;
+   
+}
+.leftm span{
+    font-family: futura;
+   color: #1e44ac;
+   
+}
+.rightm{
+    height: 50%;
+    width: 100%;
+margin-bottom: 25px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.rightmimg{
+    height: 80%;
+    width: 90%;
+    margin-bottom: 8vh;
+}
+.rightmimg img{
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+
+}
+.righmti{
+    height:20%;
+    width: 100%;
+}
+.righmti h3{
+    color: #000dff;
+    font-family: futura;
+}
+.righmti{
+    height:20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.righmti p{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #1900bc;
+  font-size: 0.5rem;
+}
+.left {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#input1::placeholder {
+    font-size: 15px; /* Adjust size as needed */
+    color: rgb(10, 34, 216); /* Optional */
+    font-weight: bold; /* Optional */
+    opacity: 1; /* Ensure visibility */
+  }
+  
+.left h1{
+    color: #000000;
+    font-family: futura;
+  font-size: 2vw;
+  margin-left: 5vw;
+}
+.left p{
+    color: #000000;
+    font-family: Elsevier Sans Web;
+    font-size: 1vw;
+    margin-left: 5vw;
+}
+.left span{
+    color: #1e44ac;
+}
+
+.right{
+    height: 100%;
+    width: 40%;
+    
+}
+.right .rightimg{
+   height: 70%;
+   width: 100%;
+}
+.rightimg img{
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+    object-fit: contain;
+    
+}
+.vacvit{
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.vacvit h1{
+ text-align: center;
+ font-family: futura;
+ color: #1100ff;
+ font-size:3rem;
+ margin-left: 3.5vw;
+}
+.vacvit p{
+color: #2e00fd;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-left: 8vw;
+}
+.jsdy2{
+    height: 100px;
+    margin-top: 5vh;
+    width: 60%;
+   border: 2px solid blue;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-right: 13vw;
+   box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+}
+.block{
+    height: 90px;
+    width: 100%;
+    background: linear-gradient(to right, #76A9FF, #1552F0, #0A1F44);
+
+
+    display: flex;
+    border: 1.5px solid black;
+}
+.b1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.endse{
+    height:60px;
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+text-align: center;
+
+    background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+.endse h2{
+    font-family: futura;
+    margin-left: 50px;
+    margin-top: 10px;
+    
+    color: #ffffff;
+}
+.b1 h2{
+    font-family: futura;
+   font-size: 1rem;
+    color: #ffffff;
+}
+
+.page2{
+    height: 300px;
+ 
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.pg-1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-1 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-1 p{
+    padding: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.img1{
+    height: 100%;
+    width: 80%;
+    margin-left: 8vw;
+
+}
+.img1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pg-2{
+    height: 100%;
+    width: 50%;
+   
+}
+.page3{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+}
+.pg-3{
+    height: 100%;
+    width: 50%;
+}
+.img2{
+        height: 100%;
+        width: 80%;
+     
+    
+}
+.img2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 30px;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.pg-4{
+    height: 100%;
+    width: 50%;
+}
+.pg-4 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-4 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.page4{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+
+}
+.pg-5{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-5 h2{
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-5 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.pg-6{
+    height: 100%;
+    width: 50%;
+}
+.img3{
+        height: 100%;
+        width: 80%;
+        margin-left: 8vw;
+     
+    
+}
+.img3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.page5{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+
+}
+.pg-7{
+ 
+    width: 50%;
+}
+.img4{
+        height: 100%;
+        width: 80%;
+     margin-left: 2vw;
+    
+}
+#user-new{
+    font-size: 2vw;
+   position: relative;
+   left: 3vw;
+}
+.img4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.pg-8{
+    height: 100%;
+    width: 50%;
+    
+}
+.pg-8 h2{
+    margin-left: 15vw;
+    color: rgb(35, 35, 242);
+    font-family: Poppins Medium;
+}
+.pg-8 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ddoc{
+ height: 15vh;
+ width: 100vw;
+ display: flex;
+ margin-top: 25px;
+ justify-content: space-evenly;
+background-color: red;
+margin-bottom: 50px;
+ align-items: center;
+}
+.ddoc h3{
+font-family: futura;
+
+text-transform: capitalize;
+}
+.dow{
+    height: 5vh;
+    width: 15vw;
+    margin-top: 5px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+    border-radius: 5px; gap: 1.5vw;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+
+}
+.dow a{
+   text-decoration: none;
+   color: #000;
+   
+}
+.dow a:hover{
+  
+   color: #0234ff;
+   
+}
+.dr{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.srch{
+    min-height: 120vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sr1{
+    height:300px ;
+    width: 400px;
+    border-radius: 2px;
+    background-color: aliceblue;
+
+    overflow: hidden;
+    
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ transition: 0.3s ease-in-out ;
+}
+.sr1:hover{
+   transform: scale(1.03);
+   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.sr1-1{
+    height: 80%;
+    width:99.8%;
+   
+    overflow: hidden;
+
+}
+.sr1 p{
+  margin-left: 1vw;
+  position: relative;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ margin-left: 2vw;
+ font-size: 2vh;
+}
+.sr1 h3{
+    font-family: futura;
+    font-size: 0.8rem;
+    color: #0138ce;
+    position: relative;
+    right:8vw;
+
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    border: 2px solid rgb(0, 0, 0);
+    
+
+   
+}
+.tab{
+    height: 3.5vh;
+    width: 16vh;
+    background-color: rgb(0, 2, 149);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     text-decoration: none;
+     margin-left: 16vw;
+     margin-bottom: 1.1vh;
+}
+.tab p{
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    right: 8px;
+    
+}
+footer{
+    height: 65vh;
+    width:100vw;
+   background: linear-gradient(to right, #0A1F44, #1552F0, #76A9FF);
+}
+
+.fotter{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.fotter .fot1-1  p{
+   font-family:Teachers ;
+}
+.fot1-1{
+    height: 30%;
+    width: 35vh;
+    margin-top: 10vh;
+
+}
+#kk01{
+    margin-top:8%;
+}
+#kk01 h2{
+   color: #fffcfc;
+   font-family: futura;
+   margin-left:15px;
+   margin-bottom: 30px;
+}
+#kk01 i{
+    margin-right: 5%;
+    margin-left:15px;
+}
+.fot1-1 h3{
+    /* opacity: 0.5; */
+    color:  #99aff2;
+}
+.fot1-1 p{
+    /* opacity: 0.5; */
+    color:  #ffffff;
+font-size: 1rem;
+margin-top: 2vh;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fot1-1 img{
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+    padding: 2vw;
+    margin-left: 1vw;
+    object-fit: contain;
+}
+.fot1-1-1{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotter2{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    
+   position: relative;
+   bottom: 50px;
+    justify-content: space-evenly;
+
+    
+}
+.fot2-1{
+    height: 100%;
+   width: 70%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+  
+}
+.fot2-1 .fot2-2 {
+     width: 100%;
+     height: 70%;
+     text-transform: capitalize;
+    
+}
+.fot2-1 .fot2-2  h4{
+     margin-left: 14.8%;
+     font-family: Teachers;
+     color: rgb(254, 254, 254)
+}
+.fot2-1 .fot2-2  h4 a{
+   text-decoration: underline;
+   color: #ccc7efc2;
+}
+.fot2-1 h3{
+    color: #ffffff;
+    font-size: 1rem;
+    margin-right: 8vw;
+     font-family: futura;
+}
+.fot2-2{
+    height: 100%;
+   width:30% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+.fot2-2 a{
+   text-decoration: none;
+   color: #ffffff;
+   font-family: futura;
+   font-size: 0.7rem;
+}
+.jsdy2 h1{
+font-size: 1vw;
+position: relative;
+top: 2px;
+right: 20px;
+
+}
+.div{
+  height: 300px;
+    width: 100vw;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+   
+   
+}
+.div-1{
+ height: 100%;
+width: 60%;
+border-radius: 10px;
+border: 1px solid blue;
+background-color: #cacbd4;
+
+   
+}
+.div-2{
+height: 100%;
+width: 35%;
+border-radius: 10px;
+overflow: hidden;
+background-color: #000dff;
+}
+.div-2 img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+}
+.div-1-h2{
+    width:  70%;
+    height: 20%;
+    display: flex;
+    font-family:Teachers ;
+   justify-content: center;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-left: 2.5%;
+    color:  rgb(42, 42, 209);
+   
+}.divkk{
+    height: 2.5px;
+    width: 200px;
+    margin-top: 7px;
+    margin-right: 15%;
+    background-color: rgb(42, 42, 209);
+    border-radius: 10px;
+}
+.div-1-p{
+    height: 50%;
+    width: 85%;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: poppins Medium;
+    color: rgba(5, 3, 57, 0.782);
+   
+}
+.sev{
+    height: 100px;
+    width: 100%;
+    margin-top: 2%;
+    
+   
+}
+.sev1{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Teachers;
+    color: #0044ff;
+   
+}
+.sev2{
+    height: 60%;
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family:  poppins Medium;
+   color: #0c1885cd;
+    
+}
+.serv{
+    height:200px;
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.fet01{
+    height: 70%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+ 
+}
+.fet01 i{
+  margin-left: 10px;
+ 
+}
+.fet01 span{
+    height: 70%;
+    width: 100%;
+    font-family: Teachers;
+    font-size: 20px;
+   
+}
+.serv1{
+    height: 100%;
+    width: 20%;
+    border:1px solid rgb(13, 13, 230) ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #aeb5ca81;
+    border-radius: 10px;
+}.f2{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+   
+}
+.f2-1{
+    height: 100%;
+    width: 80%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.f2-1 h4{
+    font-family: poppins Medium;
+    color: #332ada;
+}
+.f2-2{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.f2-2 a i{
+ text-decoration: none;
+ font-size: 25px;
+}
+#num2{
+    font-family: futura;
+    font-size: 1.8vw;
+  position: relative;
+  top: 1.5vh;
+}
+.vaxsrc{
+    height:12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    display: flex;
+    flex-direction: column;
+}
+.vaxsrc h2{
+   font-family: futura;
+}
+#input1{
+    height: 7vh;
+    width:40vw;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+}
+#button{
+    height: 7vh;
+    width:10vw;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #2500f5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.dropdown-content{
+    position: absolute;
+    background-color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 35%;
+    height: 15%;
+    color: #0404f0;
+    border: 1px solid #fffbfb;
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;  
+    overflow: auto;
+    display: none;
+    z-index: 1;
+    margin-top: 19%;
+    margin-right: 15%;
+    padding-bottom: 10px;
+}  
+.dropdown-content::-webkit-scrollbar{
+    display: none;
+}
+.fot2-2 h4{
+    
+    position: relative;
+    right: 10px;
+}
+.dropdown-content div {
+    padding: 11px;
+    font-weight: 500;
+    color: #000000;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.dropdown-content div:hover {
+    background-color: #0612fe;
+    color: #ffffff;
+}
+#input1::-webkit-appearance{
+    display: none;
+}
+.hdnwin{
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    margin-top: 5px;
+    border-radius: 25px;
+    border: 2px solid rgb(251, 0, 38);
+}
+@media (max-width: 500px) {
+.serv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    height: 100%;
+}
+.serv1{
+    width: 78%;
+   min-height:50%;
+}
+.sev2{
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.endse{
+    font-size: 2.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .fillinfo{
+        display: flex;
+        flex-direction: column;
+    }
+.svg{
+    height: 100%;
+
+    padding: 20px;
+    width: 100%;
+}
+
+.infif{
+    height: 100%;
+    width: 100%;
+}
+.infif h2{
+    font-size: 16px;
+    position: relative;
+    right: 43.5px;
+}
+.infif p{
+    font-size: 12px;
+    padding: 20px;
+
+}
+.fil{
+    margin-left: 20px;
+    height: 15px;
+    margin-top: 20px;
+
+}
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    
+.div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 5%;
+    
+   
+}
+.div-1-p{
+    font-size: 11px;
+}
+.div-2{
+    display: none;
+}
+.div-1-h2 h2{ 
+    font-size: 13px;
+
+}
+.div-1{
+    height: 100%;
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid blue;
+   background-color: #cacbd4;
+   
+ 
+   }
+   .divkk{
+    display: none;
+   }
+    .hdnwin{
+       display: none;
+    }
+    /* .dropdown-content{
+        margin-top: 65%;
+        margin-right: 15%;
+        width: 65%;
+        height: 65%;
+
+        
+    }   */
+    .right{
+        display: none;
+    }
+    #input1{
+        height: 4vh;
+        width:55vw;
+
+        
+    }
+    #button{
+        height: 4vh;
+        width:15vw;
+       
+    }
+    .jsdy2 h1{
+      background-color: #0044ff;
+        }
+    #num2{
+        font-size: 2vw;
+        background-color: #0044ff;
+    } 
+    .fot1-1 p{
+      margin-left: 4vw;
+      font-size: 0.7rem;
+    }
+    .fot1-1-1 {
+        padding: 4vw;
+    }
+    .fot1-1 h3{
+        /* opacity: 0.5; */
+        font-size: 0.7rem;
+        margin-left: 2vh;
+        color:  #99aff2;}
+    .fot2-2{
+        gap: 2vh;
+    }
+    .fot2-1 h3{
+        color: #ffffff;
+        font-size: 0.5rem;
+        margin-right: 8vw;
+        padding: 25px;
+         font-family: futura;
+    }
+    .fot2-2 a{
+        /* text-decoration: none; */
+        color: #ffffff;
+        font-family: futura;
+        font-size: 0.4rem;
+     }
+    .fot2-2 a:hover{
+      text-decoration: underline white;
+
+     }
+    .navpart1 h1, .navpart1 h5{
+        font-size: 3vw;
+    }
+    .navpart2 a {
+        display: none;
+    }
+    .bar i {
+        display: block;
+        position: relative;
+        left: 80px;
+        font-size: 25px;
+        bottom: 12px;
+    }
+    .hidden a {
+        font-size: 2vw;
+    }
+    .page1{
+        display: none;
+    }
+    .pagem{
+        height:650px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .leftm{
+        height: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .leftm h1{
+        font-family: futura;
+        font-size: 5vw;
+    margin-bottom: 2vh;
+        margin-left: 4vw;
+       
+    }
+    .leftm p{
+        font-family: futura;
+        font-size: 3vw;
+   
+        margin-left: 4vw;
+    
+    }
+    .leftm span{
+        font-family: futura;
+       color: #0044ff;
+       
+    }
+    .jsdy{
+        height: 70px;
+        margin-top: 2vh;
+       width: 90vw;
+       border: 2px solid blue;
+       border-radius: 5px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+    }
+    .jsdy2 h1{
+        font-size: 35px;
+      margin-top: 11px;
+    }
+   
+    .img{
+        height: 90%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    .img2 img{
+        height: 100%;
+        width: 100%;
+        margin-bottom: 5vh;
+       
+    }
+    .b1 h2{
+        font-family: futura;
+       font-size: 2vw;
+       margin-left: 3vw;
+        color: #ffffff;
+    }
+    .page2, .page3, .page4, .page5 {
+        flex-direction: column; 
+        height: auto; 
+    }
+    .pg-1, .pg-2,
+    .pg-3, .pg-4,
+    .pg-5, .pg-6,
+    .pg-7, .pg-8 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img1, .img2, .img3, .img4 {
+        width: 90%; 
+        margin-left: 0;
+    }
+
+    .pg-1 p, .pg-4 p, .pg-5 p, .pg-8 p {
+       font-size: 4vw;     
+    }
+    .pg-1 h2, .pg-4 h2, .pg-5 h2, .pg-8 h2 {
+        font-size: 0.9em; 
+        text-align: center;
+        margin-left: 0;
+    }
+    .vaxsrc h2{
+        font-family: futura;
+        font-size: 0.9em; 
+     }
+.img2 img{
+    display: none;
+   
+} 
+.img4 img{
+    display: none;
+} 
+     .img1 img,  .img3 img{
+        height: auto; 
+        object-fit: contain;
+        object-position: center;
+        border-radius: 15px;
+    }
+    .srch{
+       gap: 20px;
+     padding: 35px;
+    }
+    .sr1-1{
+        height: 65%;
+        width: 90%;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .sr1-1{
+    height: 55%;
+    width: 90%;
+    
+    
+}
+    .sr1 h3{
+  position: relative;
+  right: 22vw;
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    border: 2px solid blue;
+    object-fit:cover;
+    border-radius: 8px;
+   
+}
+.sr1 p{
+  
+   font-size: 1.7vh;
+  }
+.tab{
+    margin-top: 18px;
+    margin-right: 15vw
+} .ddoc h3{
+    font-size: 3.8vw;
+}
+    .dow{
+        height: 4vh;
+        width: 35vw;
+       margin-top: 20px
+    
+    }
+    #user-new{
+        display: none
+    }
+
+    .winning h5 {
+        font-size: 0.4em;
+      position: relative;
+      right: 30px;
+      
+    }
+    .bar i{
+       margin-right: 35px
+    }
+    .fot2-2 h4{
+        font-size: 2vw;
+        position: relative;
+        right: 20px;
+    }
+    .fot1-1 h2{
+        font-size: 3vw;
+        position: relative;
+        top: 20px;
+    }
+    };
+@media (max-width: 700px) {
+    .navpart2 a {
+        font-family: sans-serif;
+        font-size: 0.8em;
+        margin-bottom: 2vw;
+    }
+
+}
+  </style>
+</head>
+<body>
+    <main id="main">
+      <header>
+        <div class="navpart1">
+            <div class="life"><h1><i id="remove"  class="fa-solid fa-syringe" style="color: #09125f;"></i> LifeShield</h1></div>
+            <div class="winning"><h5>winning over disease</h5></div>
+        </div>
+        <div class="navpart2">
+            <a id="hdn2"  href="index.html">HOME</a>
+            <a id="hdn2"   href="abt.html">ABOUT</a>
+            <a id="hdn2"  href="services.html">SERVICES</a>
+            <a id="hdn2"  href="FAQS.HTML">FAQ</a>
+            <a id="hdn2"  href="map.html">SEARCH NEAR VACCINE CENTER</a>
+            <!-- <div class="nav-links">
+                <a href="http://localhost:3002/" id="loginLink">REGISTER/PROFLE</a>
+            </div> -->
+            <a  href="http://localhost:3002/" id="hdn2">REGISTER/PROFLE</a>
+            <!-- <i  id="user-new" class="fa-solid fa-user" style="color: #ffffff;"></i> -->
+            <div class="bar">
+                <i id="bar" class="fa-solid fa-bars" style="color: #081085;"></i>
+            </div>
+        </div>
+       </header>
+       <div class="kkd"></div>
+       <div id="hidden" class="hidden">
+        <a id="hdn" href="/">HOME</a>
+        <a id="hdn" href="abt.html">ABOUT</a>
+        <a id="hdn" href="services.html">SERVICES</a>
+        <a  href="http://localhost:3002/">REGISTER/PROFLE</a>
+        <a id="hdn2"  href="map.html">SEARCH NEAR VACCINE CENTER</a>    
+       </div>
+        <div class="m"> <h1>Hospital Details</h1></div>
+  <div class="dj">
+  
+  <div id="hospitalDetails">
+    <!-- Hospital details will be dynamically loaded here -->
+  </div></div>
+  <footer>
+    <div class="fotter">
+        <div class="fot1-1"><h3>VACCINATION SERVICES</h3> <p>Up to date info about vaccine</p>
+            <p>Age based reminders</p>
+            <p>vaccine history</p>
+            <p>slot booking</p></div>
+        <div class="fot1-1"><h3>CONTACTS US</h3> <p>Helpline: +91-11-23978046 (Toll Free - 1075 ) </p>
+            <p>Technical Helpline: 7774025744</p></div>
+        <div class="fot1-1"><img src="Screenshot 2025-01-06 162736.png" alt="">
+            <div class="fot1-1-1"> <a href=""></a><i class="fa-regular fa-envelope" style="color: #ffffff;"></i> 
+                <a href=""><i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a> 
+                <a href=""><i class="fa-brands fa-instagram fa-sm" style="color: #ffffff;"></i></a>
+                <a href=""><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></div></a></div>
+    </div>
+    <div class="fotter2">
+ <div class="fot2-1"><h3>All rights Reserved © LifeShield, 2024 & This Website is Design by Team ASEP</h3></div>
+ <div class="fot2-2"><a href="">Terms of service</a><a href="">privacy policy</a></div>
+    </div>
+</footer>
+<script src="script.js"></script>
+  <script>
+    // Sample data for hospital details
+    const hospitalDetails = {
+      1: {
+        name: "Jeewansathi Hospital",
+        contact: "09920027124",
+        timings: "9 AM - 9 PM Sunday - closed",
+        address: "R.P. road, opposite tilak nagar post office, ground floor, Guru milan CHS, Kondhwa, Pune, Maharashtra 411048",
+        services: "Vaccination, General Checkup, Emergency"
+      },
+      2: {
+        name: "Noble Hospital",
+        contact: "09087070890",
+        timings: "9 AM - 9 PM Tuesday - closed",
+        address: "FV9Q+9V5, Kondhwa Main Rd, Kondhwa, Pune, Maharashtra 411048",
+        services: "Vaccination, Surgery, General Medicine"
+      },
+      3: {
+        name: "Siddhivinayak Hospital",
+        contact: "02026961600",
+        timings: "24 hours open",
+        address: "Part No. 2, Ambamatha Mandir, Lane No. 3, near Mahesh Bank, Sukhsagar Nagar, Katraj, Pune, Maharashtra 411046",
+        services: "Vaccination, Emergency, Pediatric Care"
+      },
+      4: {
+        name: "Kondhwa General Hospital",
+        contact: "07875855855",
+        timings: "24 hours",
+        address: "2nd Floor, Front of Durgamata Temple, Chordia Corner, S. No 65, Kondhwa, Pune, Maharashtra 411048",
+        services: "Vaccination, General Checkup"
+      },
+      5: {
+        name: "Motherhood Hospital",
+        contact: "08494800097",
+        timings: "24 hours",
+        address: "Survey No. 3491, Plot 80, Munjeri Near Bharat Petrol Pump, Opposite Mount Carmel School, Kodhwa, Pune, Maharashtra 411048",
+        services: "Vaccination, Maternity, General Medicine"
+      },
+      6: {
+        name: "Shivprasad Hospital",
+        contact: "09941697777",
+        timings: "9 AM - 11 PM",
+        address: "Shop No, 1Swami, Santosh Samarth, Krishna Road, Santosh Nagar, Katraj, Pune, Maharashtra 411046",
+        services: "Vaccination, General Surgery"
+      },
+      7: {
+        name: "Jeevandhara Hospital",
+        contact: "020 68765432",
+        timings: "24 hours",
+        address: "BUILDING, SR.NO 84/2-D, FIRST FLOOR, BHAGIRATHI SQUARE, Morebaug Rd, Katraj, Pune, Maharashtra 411046",
+        services: "Vaccination, Family Medicine"
+      },
+      8: {
+        name: "Dr. Patil’s Clinic",
+        contact: "09529998676",
+        timings: "6:30 AM - 9:30 PM Sunday closed",
+        address: "First floor, Shatrunjay, Kausalya building, Gangadham - Shatrunjay Rd, near to Salve Garden, Pune, Maharashtra 411048",
+        services: "Vaccination, Pediatric Care"
+      },
+      9: {
+        name: "Rainbow Children's Clinic",
+        contact: "08044826177",
+        timings: "9 AM - 1 PM  5 PM - 7 PM",
+        address: "Shop no.4 First floor, Mandot tower, Gangadham - Shatrunjay Rd, opposite Shri Shanti Nagar Society, Kasat Nagar, Katraj, Pune, Maharashtra 411048",
+        services: "Vaccination, Emergency, General Medicine"
+      },
+      10: {
+        name: "Vatsalya Children's Clinic",
+        contact: "09657732512",
+        timings: "9 AM - 2 PM 5 PM - 9:30PM",
+        address: "Shop no 1, Building A1, Todkar garden, Bibwewadi Kondhwa Rd, Katraj, Pune, Maharashtra 411037",
+        services: "Vaccination, Surgery, Pediatric Care"
+      },
+      11: {
+        name: "Pimpri Multispeciality Hospital",
+        contact: "020 62345678",
+        timings: "24 hours",
+        address: "411033, Dattraj Colony, Mangal Nagar, Pimpri-Chinchwad, Maharashtra",
+        services: "Vaccination, General Checkup"
+      },
+      12: {
+        name: "Aditya Birla Memorial Hospital",
+        contact: "09881123006",
+        timings: "24 hours",
+        address: "Aditya Birla Hospital Marg, Thergaon, Pimpri-Chinchwad, Maharashtra 411033",
+        services: "Vaccination, Surgery, General Medicine"
+      },
+      13: {
+        name: "Shree Clinic",
+        contact: "09595055777",
+        timings: "9:30 AM - 2 PM & 5 PM - 10 PM Sunday 10:30 AM - 2 PM & 5 PM - 10 PM",
+        address: "Infront, Shubharambh Housing Society, Datta Nagar, Jadhav Wadi, Chikhali, Pimpri-Chinchwad, Pune, Maharashtra 411019",
+        services: "Vaccination, Emergency, Pediatric Care"
+      },
+      14: {
+        name: "Dr. Aarti Hospital",
+        contact: "09284108764",
+        timings: "9:30 AM - 2:30 PM & 5:45 PM - 7:30 PM Sunday closed",
+        address: "Shop 108,Rose Icon Commercial Complex, Kunal Icon Road, Pimpri, Pune, Maharashtra 411027",
+        services: "Vaccination, General Surgery"
+      },
+      15: {
+        name: "Medicare Clinic",
+        contact: "08766875591",
+        timings: "8:30 AM - 10 PM",
+        address: "Gurudwara road walekarwadi chinchwad, Pune, Maharashtra 411033",
+        services: "Vaccination, General Checkup"
+      },
+      16: {
+        name: "Sahyadri Hospital",
+        contact: "08888822222",
+        timings: "24 hours",
+        address: "opp. Sakhar Sankul, Anutej Atharv society, Narveer Tanaji Wadi, Shivajinagar, Pune, Maharashtra 411005",
+        services: "Vaccination, Emergency, General Medicine"
+      },
+      17: {
+        name: "Usha Nursing Home",
+        contact: "02026344969",
+        timings: "12 AM - 11:30 PM",
+        address: "Police Chowky, 149, MG Road, near Poolgate, Agarwal Colony, Pune Cantonment, Pune, Maharashtra 411001",
+        services: "Vaccination, Maternity, General Surgery"
+      },
+      18: {
+        name: "Cloudnine Maternity Hospital",
+        contact: "09972899728",
+        timings: "24 hours",
+        address: "No.65, CTS No. 3175, Shri Shivaji Co.Op. Housing Society, Senapati Bapat Rd, behind JW MARRIOTT HOTEL, Shivaji Co operative Housing Society, Bhageerath, Gokhalenagar, Pune, Maharashtra 411016",
+        services: "Vaccination, General Checkup"
+      },
+      19: {
+        name: "Srinivas Hospital",
+        contact: "02027660556",
+        timings: "24 hours",
+        address: "Plot No, LC-5A, near Shiv Bhoomi School, Nishigandha, Runal Florence, Yamuna Nagar, Nigdi, Shivajinagar, Maharashtra 411044",
+        services: "Vaccination, Pediatric Care"
+      },
+      20: {
+        name: "KEM Hospital",
+        contact: "02066037300",
+        timings: "24 hours",
+        address: "489, Mudaliar Rd, Rasta Peth, Pune, Maharashtra 411011",
+        services: "Vaccination, Emergency, General Medicine"
+      },
+      21: {
+        name: "Noble Hospital",
+        contact: "020 67890123",
+        timings: "9 AM - 6 PM",
+        address: "Bypass Rd, North Hadapsar, Hadapsar, Pune, Maharashtra 411028",
+        services: "Vaccination, Emergency, Surgery"
+      },
+      22: {
+        name: "Sahyadri Hospital",
+        contact: "08888822222",
+        timings: "24 hours",
+        address: "SN 163, Bhosale Garden Rd, beside Bhosale Nagar, Aru Nagar, Laxmi Vihar, Hadapsar, Pune, Maharashtra 411028",
+        services: "Vaccination, General Checkup"
+      },
+      23: {
+        name: "Dr. Deshmukh Clinic",
+        contact: "09890043585",
+        timings: "24 hours",
+        address: "Fifth floor, City centre, 515, opp. Vaibhav Complex, Hadapsar, Pune, Maharashtra 411028",
+        services: "Vaccination, Pediatric Care"
+      },
+      24: {
+        name: "Shivai Multispecialty Clinic",
+        contact: "020 70123456",
+        timings: "9:30 AM - 9:30 PM",
+        address: "1st Floor, Vaishali Heights, opposite Janseva Bank, Gadital, Hadapsar, Pune, Maharashtra 411028",
+        services: "Vaccination, General Surgery"
+      },
+      25: {
+        name: "H3 Hospital",
+        contact: "020 71234567",
+        timings: "24 hours",
+        address: "1st floor, NARAYAN CHEMBERS, behind Vitthal HP petrol pump, Bhekrai Nagar, Hadapsar, Phursungi, Pune, Maharashtra 412308",
+        services: "Vaccination, General Checkup"
+      },
+      26: {
+        name: "Apollo Clinic",
+        contact: "1860 500 7788",
+        timings: "7 AM - 9:30 PM",
+        address: "Ground Nyati Millenium Premises S1 Datta Mandir Chowk, Viman Nagar, Pune, Maharashtra 411014",
+        services: "Vaccination, General Checkup"
+      },
+      27: {
+        name: "Apollo Spectra Hospitals",
+        contact: "084484 40991",
+        timings: "24 hours",
+        address: "FVX3+M7M, Saras Baug Rd, opp. Sanas Play Ground, Vijayanagar Colony, Sadashiv Peth, Pune, Maharashtra 411030",
+        services: "Vaccination, Surgery"
+      },
+      28: {
+        name: "Cloudnine Hospital",
+        contact: "09972899728",
+        timings: "24 hours",
+        address: "Survey No. 212/1B, Waves, Plot no. 59 C, viman Nagar, Pune, Maharashtra 411006",
+        services: "Vaccination, Maternity, General Medicine"
+      },
+      29: {
+        name: "Dhanwantri Hospital",
+        contact: "09881444156",
+        timings: "10 AM - 2 PM & 6 PM - 10 PM",
+        address: "Plot.No 51 246, near Ganpati Mandir, Bhairav Nagar, Dhanori, Pune, Maharashtra 411015",
+        services: "Vaccination, General Checkup"
+      },
+      30: {
+        name: "Sparsh Hospital",
+        contact: "09325031190",
+        timings: "24 hours",
+        address: "Dhanori-Lohegaon Rd, Sathe Nagar, Lohegaon, Pune, Maharashtra 411047",
+        services: "Vaccination, Surgery"
+      },
+      31: {
+        name: "CHIRAYU CHILDREN'S HOSPITAL",
+        contact: "083800 55444",
+        timings: "9 AM - 6 PM",
+        address: "301, Datta Mandir Rd, Shankar Kalat Nagar, Wakad, Pimpri-Chinchwad, Maharashtra 411057",
+        services: "Vaccination, Emergency, Surgery"
+      },
+      32: {
+        name: "Shree Hospital",
+        contact: "07498266614",
+        timings: "24 hours",
+        address: "Shinde Vasti, 39/6/1, Marunji Rd, Shinde nagar, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057",
+        services: "Vaccination, Pediatric Care"
+      },
+      33: {
+        name: "Shree Clinic",
+        contact: "07798185011",
+        timings: "10 AM - 1 PM & 6 PM - 8 PM",
+        address: "Mhatoba Chowk, Shree Clinic,207 , Rajveer Nucleus, beside B Tanish, Wakad, Pune, Maharashtra 411057",
+        services: "Vaccination, General Checkup"
+      },
+      34: {
+        name: "Vishwas Hospital",
+        contact: "020 70123456",
+        timings: "6:30 AM - 9:30 PM",
+        address: "Shop No 6, Amrapali Apartments, Paud Rd, near Saudamini CHS, Paud Road, Right, Bhusari Colony, Kothrud, Pune, Maharashtra 411038",
+        services: "Vaccination, General Medicine"
+      },
+      35: {
+        name: "Phoenix Hospital",
+        contact: "075175 10033",
+        timings: "24 hours",
+        address: "Aundh Dange Chowk Road, opp. Rythem society, near Kalewadi Phata, Pawar Nagar, Thergaon, Pune, Maharashtra 411033",
+        services: "Vaccination, Surgery"
+      },
+      36: {
+        name: "Ruby Hall Clinic",
+        contact: "1800 210 4949",
+        timings: "24 hours",
+        address: "Rajeev Gandhi Infotech Park, MIDC Phase No 1, Plot No, P-33, Hinjawadi, Pune, Maharashtra 411057",
+        services: "Vaccinations, Pediatrics, Emergency Care, Surgery, Orthopedics, Neurology, Cardiology"
+      },
+      37: {
+        name: "Sanjeevani Multispeciality Hospital",
+        contact: "092256 51258",
+        timings: "24 hours",
+        address: "Shivaji Chowk / Hinjawadi Chowk, Shivaji Chowk, Hinjawadi Rd, above IDBI Bank, Hinjawadi Village, Hinjawadi, Pimpri-Chinchwad, Maharashtra 411057",
+        services: "Vaccinations, Emergency Services, Surgery, Maternity, Pediatrics"
+      },
+      38: {
+        name: "CityCare Medical Center",
+        contact: "098905 88303",
+        timings: "24 hours",
+        address: "The Address Commercia,Shop No 301-304, Sayaji Hotel, Service Rd, above HDFC Bank, Hinjawadi, Pimpri-Chinchwad, Maharashtra 411057",
+        services: "Neurosurgery, Ophthalmology, Gynecology, Orthopedic"
+      },
+      39: {
+        name: "LifeTree Hospital",
+        contact: "085302 20401",
+        timings: "24 hours",
+        address: "Ram Height, Survey no.10/4, Hinjawadi - Wakad Rd, above Bata store, Near D-Mart, Hinjawadi, Pimpri-Chinchwad, Maharashtra 411057",
+        services: "Gynaecologist, Paediatrician"
+      },
+      40: {
+        name: "Kaushalya Hospital",
+        contact: "083296 67895",
+        timings: "24 hours",
+        address: "Mauli Complex, Near Shell Petrol Pump, Hinjawadi - Wakad Rd, Hinjewadi Phase 1 Rd, Hinjawadi, Pune, Maharashtra 411057",
+        services: "gynecology, cosmetology, maternity, infertility, surgery"
+      },
+      41: {
+        name: "Arogyam Health Clinic",
+        contact: "090492 81504",
+        timings: "9 AM - 3 PM",
+        address: "205, 2 Nd Floor, PROSPERO Building, Near Mount and Glory society , Near Forest County Society, Near EON IT park, Kharadi, Pune, Maharashtra 411014",
+        services: "Child Specialist Vaccination"
+      },
+      42: {
+        name: "Balaji Hospital",
+        contact: "088888 43121",
+        timings: "24 hours",
+        address: "Ujwal Kalindi Complex, Nagar Rd, BYEPASS CHOWK, Ashoka Nagar, Kharadi, Pune, Maharashtra 411014",
+        services: "Orthopaedic Surgery, Joint/knee/shoulder Surgery, Arthroscopy Surgery"
+      },
+      43: {
+        name: "Manipal Hospital",
+        contact: "020 6165 6666",
+        timings: "24 hours",
+        address: "22/2A, Mundhwa - Kharadi Rd, near Nyati Empire, Santipur, Thite Nagar, Kharadi, Pune, Maharashtra 411014",
+        services: "cardiology, cancer care, neurology, and orthopedics"
+      },
+      44: {
+        name: "Elite Momz",
+        contact: "091195 89191",
+        timings: "24 hours",
+        address: "Survey No 4, 1, Mundhwa - Kharadi Rd, behind Radisson Blu, Pandhari Nagar, Kharadi, Pune, Maharashtra 411014",
+        services: "Vaccination, General Checkup"
+      },
+      45: {
+        name: "PMC Hospital Kharadi",
+        contact: "091195 89191",
+        timings: "9 AM - 1 PM , 1:30 PM - 5 PM, Saturday : 9 AM - 1 PM Sunday closed",
+        address: "HW2P+XR6, Tukaram Nagar, Kharadi, Pune, Maharashtra 411014",
+        services: "General Surgeon, Anesthesiologist, Dermatologist"
+      },
+      46: {
+        name: "Deoyani Multi Speciality Hospital",
+        contact: "02039623962",
+        timings: "24 hours",
+        address: "Plot No, 121, Lane Number 4, Dahanukar Colony, Kothrud, Pune, Maharashtra 411038",
+        services: "Dentist, Homoeopath"
+      },
+      47: {
+        name: "Kothrud Hospital",
+        contact: "080 4805 9328",
+        timings: "24 hours",
+        address: "Gadiya Estate, Paud Rd, opposite Hill View Park, Bhagya Chintamani Nagar, Guruganesh Nagar, Kothrud, Pune, Maharashtra 411038",
+        services: "Orthopaedics, Surgeon"
+      },
+      48: {
+        name: "Sahyadri Hospital Kothrud",
+        contact: "088888 22222",
+        timings: "24 hours",
+        address: "Neena Co-op. Housing Society, S.No.1484A/B, Plot No. 9-B, Paud Rd, Off Vanaz Engineers Limited, Lokmanya Colony, Kothrud, Pune, Maharashtra 411038",
+        services: "Ayurveda specialist, Dietitian/Nutritionist"
+      },
+      49: {
+        name: "Borse Vitalife Hospital",
+        contact: "020 6748 6900",
+        timings: "24 hours",
+        address: "98-43, Paud Rd, near Royal Enfield Showroom Right, Paud Road, Bhusari Colony, Kothrud, Pune, Maharashtra 411038",
+        services: "Oncologist, Ophthalmologist"
+      },
+      50: {
+        name: "City Hospital",
+        contact: "099213 59090",
+        timings: "24 hours",
+        address: "Motiram Complex, Paud Rd, Opp. Kachara Depot, Shastri Nagar, Kothrud, Pune, Maharashtra 411029",
+        services: "General Physician, General Surgeon"
+      },
+      51: {
+        name: "Vighnaharata Multispeciality Hospital",
+        contact: "099218 84422",
+        timings: "24 hours",
+        address: "Plot no 5 Mahesh Society Chowk, Opposite Bibawewadi Petrol Pump, Pune, Maharashtra 411037",
+        services: "Ortho gynacology surgeon"
+      },
+      52: {
+        name: "SAHYADRI HOSPITAL",
+        contact: "9764113344",
+        timings: "24 hours",
+        address: "S. No. 573, City No.281, Plot No. 13, Swami Vivekananda Marg, Parshwanath Nagar, Ramyanagari Housing Society, Bibwewadi, Pune,",
+        services: "Dentist, Cardiologist"
+      },
+      53: {
+        name: "Premchand Oswal Hospital",
+        contact: "088062 52525",
+        timings: "24 hours",
+        address: "FV99+38F, Unnamed Road, Chintamani Nagar, Bibwewadi, Pune, Maharashtra 411037",
+        services: "Homoeopath"
+      },
+      54: {
+        name: "Trimal Hospital",
+        contact: "020 2428 3185",
+        timings: "24 hours",
+        address: "666, Bansilal Path, Renuka Society, Chaitraban, Upper Indira Nagar, Bibwewadi, Pune, Maharashtra 411037",
+        services: "Gynecologist/Obstetrician, Oncologist"
+      },
+      55: {
+        name: "Chintamani Hospital",
+        contact: "081492 99348",
+        timings: "24 hours",
+        address: "53, Bibwewadi Kondhwa Rd, above Vidya Sahakari Bank, Jedhe Nagar, Shree Sant Eknath Nagar, Bibwewadi, Pune, Maharashtra 411037",
+        services: "Anesthesiologist, General Surgeon"
+      }
+    };
+    const urlParams = new URLSearchParams(window.location.search);
+    const hospitalId = urlParams.get('id');
+
+    // Find the hospital details
+    const hospital = hospitalDetails[hospitalId];
+
+    
+    if (hospital) {
+      document.getElementById('hospitalDetails').innerHTML = `
+        <h2>${hospital.name}</h2>
+        <p><strong>Contact:</strong> ${hospital.contact}</p>
+        <p><strong>Timings:</strong> ${hospital.timings}</p>
+        <p><strong>Address:</strong> ${hospital.address}</p>
+        <p><strong>Services:</strong> ${hospital.services}</p>
+        <a href='/'><button>Go Back</button></a>
+        <button onclick="downloadPDF()" id="kk">Download Adress as a  pdf</button>
+      `;
+    } else {
+      document.getElementById('hospitalDetails').innerHTML = "<p>No hospital found.</p> <a href='map.html'><button>Go Back</button></a>";
+    }
+
+    function downloadPDF() {
+  if (!hospital) {
+    alert("No hospital data available.");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // Set Title
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(18);
+  doc.text("Hospital Details By Lifeshield.com", 10, 10);
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(12);
+
+  let y = 20; 
+
+  function addText(title, value) {
+    doc.setFont("helvetica", "bold");
+    doc.text(title, 10, y);
+    doc.setFont("helvetica", "normal");
+
+    let wrappedText = doc.splitTextToSize(value, 180); 
+    doc.text(wrappedText, 10, y + 6);
+
+    y += wrappedText.length * 6 + 4; 
+  }
+
+  // Add Hospital Data
+  addText("Hospital Name:", hospital.name);
+  addText("Contact:", hospital.contact);
+  addText("Timings:", hospital.timings);
+  addText("Address:", hospital.address);
+  addText("Services:", hospital.services);
+
+  
+  doc.save(`${hospital.name.replace(/\s+/g, '_')}_details.pdf`);
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<style>
+    .navbar {
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 10;
+      height: 100px;
+     
+    }
+  
+    .navbar-brand img {
+      height: 70px; /* Bigger logo */
+    }
+  
+    .offcanvas-start-custom {
+      width: 250px;
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      z-index: 1050;
+      padding: 2rem 1rem;
+      transition: left 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .offcanvas-start-custom.show {
+      left: 0;
+    }
+  
+    .location h5 {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+  
+    .nav-link {
+      color: #000 !important;
+    }
+  
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .nav-links-desktop a {
+      background-color: crimson;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  
+    /* Hide these on small screens */
+
+    .nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links-desktop a {
+  background-color: crimson;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Hide on small screens */
+@media (max-width: 600px) {
+  .nav-links-desktop {
+    display: none;
+  }
+}
+
+  </style>
+  
+  <!-- Navbar -->
+  <nav class="navbar px-3">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+  
+      <!-- Left Section -->
+      <div class="d-flex align-items-center gap-3">
+        <a class="navbar-brand" href="#">
+            <img src="/image/img.png" alt="logo" style="height: 110px; width: auto; max-width: 200px; object-fit: contain; position: relative; bottom:10px; right:25px;">
+
+        </a>
+        <div class="d-none d-md-block">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa-solid fa-location-dot text-dark"></i>
+            <h5 class="mb-0">Your Location</h5>
+          </div>
+          <div id="locabutom">
+            <h5 id="new" class="mb-0 text-muted small">City, Area</h5>
+          </div>
+        </div>
+      </div>
+  
+      <div class="d-flex align-items-center gap-3">
+        <!-- Buttons (only visible >600px) -->
+        <div class="nav-links-desktop">
+          <a href="#"><i class="fa-regular fa-user me-2"></i>Mess Login</a>
+          <a href="#"><i class="fa-regular fa-user me-2"></i>Customer Sign In</a>
+          <a href="#"><i class="fa-solid fa-phone me-2"></i>Contact Us</a>
+        </div>
+  
+      <!-- Hamburger -->
+      <button class="navbar-toggler border-0" type="button" id="menuToggle">
+        <span><i class="fa-solid fa-bars text-danger fs-2"></i></span>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Offcanvas Menu (Mobile) -->
+ 
+   <div id="offcanvasMenu" class="offcanvas-start-custom">
+    <button type="button" class="btn-close float-end mb-4" id="menuClose"></button>
+    <ul class="navbar-nav gap-3">
+       <% if (locals.user) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile"><i class="fa-regular fa-user me-2"></i>Profile</a>
+        </li>
+       <% } %>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa-regular fa-user me-2"></i>Mess Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signin"><i class="fa-regular fa-user me-2"></i>Customer Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup"><i class="fa-regular fa-user me-2"></i>Mess Signup</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/signup"><i class="fa-regular fa-user me-2"></i>Customer Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa-solid fa-phone me-2"></i>Contact Us</a>
+      </li>
+    </ul>
+  </div>

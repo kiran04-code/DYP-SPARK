@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Login/Signup </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <main id="main">
+        <header>
+         <div class="navpart1">
+             <div class="life"><h1><i class="fa-solid fa-syringe" style="color: #ffffff;"></i> LifeShield</h1></div>
+             <div class="winning"><h5>winning over disease</h5></div>
+         </div>
+         <div class="navpart2">
+             <a id="hdn2"   href="http://127.0.0.1:3000/index.html">HOME</a>
+             <a id="hdn2"   href="#">ABOUT</a>
+             <a id="hdn2"  href="services.html">SERVICES</a>
+             <a id="hdn2"  href="#">FAQ</a>
+             <div class="nav-links">
+                 <a href="#" id="loginLink">REGISTER</a>
+             </div>
+             <!--<i  id="user-new" class="fa-solid fa-user" style="color: #ffffff;"></i>--> 
+             <div class="bar">
+                 <i id="bar" class="fa-solid fa-bars" style="color: #ffffff;"></i>
+             </div>
+         </div>
+        </header>
+        <div id="hidden" class="hidden">
+         <a id="hdn" href="index.html">HOME</a>
+         <a id="hdn" href="#">ABOUT</a>
+         <a id="hdn" href="services.html">SERVICES</a>
+         <a id="hdn" href="">MY PROFILE</a>
+         <a   id="hdn" href="http://localhost:3002/">REGISTER/ SIGN-IN</a>
+        </div>
+       
+    <div class="holebox">
+    <div class="contaner">
+       <div class="from-box login">
+        <form action="/login" method="POST">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" name="username" id="loginUsername"  required >
+                <i class="fa-solid fa-user" style="color: #000000;"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="password"name="password"  id="loginPassword"  required>
+            <i class="fa-solid fa-lock" style="color: #000000;"></i>
+            </div>
+              <button type="button" class="button"  onclick="login()">Login</button>
+        </form>
+       </div>
+       <div class="from-box rigister">
+        <form  action="/submit" method="POST">
+            <h1>Registration</h1>
+            <div class="input-box">
+                <input type="" placeholder="Username" name="username"  id="registerUsername" required>
+                <i class="fa-solid fa-user" style="color: #000000;"></i>
+                <span id="valid" class="valid1"></span>
+            </div>
+            <div class="input-box">
+                <input type="tel" name="MobileNumber"   id="registerMobile"   placeholder="Number" required />
+                <i class="fa-solid fa-square-phone" style="color: #000000;"></i>
+                <span id="validm" class="valid2"></span>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email"   id="registeremail"   placeholder="Email" required />
+                <i class="fa-solid fa-square-phone" style="color: #000000;"></i>
+                <span id="validm" class="valid2"></span>
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Age" name="Age"  id="Age"  required>
+                <i class="fa-solid fa-calendar-days" style="color: #000000;"></i>
+                <span id="ages" class="valid2"></span>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="password" name="password" id="registerPassword" required>
+            <i class="fa-solid fa-lock" style="color: #000000;"></i>
+            <span id="validn" class="valid2"></span>
+            </div>
+            <button type="submit" id="submit" class="button" onclick="register()"   >Register</button>
+        </form>
+       </div>
+     <div class="togglebox">
+        <div class="toggle-panel toggle-left">
+            <h1>Hello,welcome! </h1>
+            <p>Don't have an account?</p>
+            <button class="button register-btn">Register</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+            <h1>welcome back ! </h1>
+            <p>Already have an account? </p>
+            <button class="button login">Login</button>
+        </div>
+     </div>
+    </div>
+    </div>
+    
+    <footer>
+        <div class="fotter">
+            <div class="fot1-1"><h3>VACCINATION SERVICES</h3> <p>Up to date info about vaccine</p>
+                <p>Age based reminders</p>
+                <p>vaccine history</p>
+                <p>slot booking</p></div>
+            <div class="fot1-1"><h3>CONTACTS US</h3> <p>Helpline: +91-11-23978046 (Toll Free - 1075 ) </p>
+                <p>Technical Helpline: 7774025744</p></div>
+            <div class="fot1-1"><img src="Screenshot 2025-01-06 162736.png" alt="">
+                <div class="fot1-1-1"> <a href=""></a><i class="fa-regular fa-envelope" style="color: #ffffff;"></i> 
+                    <a href=""><i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a> 
+                    <a href=""><i class="fa-brands fa-instagram fa-sm" style="color: #ffffff;"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></div></a></div>
+        </div>
+        <div class="fotter2">
+     <div class="fot2-1"><h3>All rights Reserved © LifeShield, 2024 & This Website is Design by Team ASEP</h3></div>
+     <div class="fot2-2"><a href="">Terms of service</a><a href="">privacy policy</a></div>
+        </div>
+    </footer>
+    <style>
+ *::selection{
+    background-color: #000000;
+    color: #ffffff;
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+.holebox{
+    min-height: 40vh;
+  display: flex;
+  align-items: center;
+ justify-content: center;
+ background: linear-gradient(90deg, #fdfcfc,#acb9e4);
+}
+.jugad{
+    height: 400px;
+    width: 20%;
+    position: absolute;
+    top: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    left: 10%;
+   
+}
+/* Profile container styling */
+.profile-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Profile icon styling */
+.pmain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.prf {
+    width: 80px;
+    height: 80px;
+    background: #007bff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prf i {
+    font-size: 40px;
+    color: white;
+}
+
+/* Profile info section */
+#profileInfo {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.logout-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+#button1 {
+    background: #0c00f9;
+    color: white;
+}
+
+#button1:hover {
+    background: #218838;
+}
+
+/* Home link styling */
+.home-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    text-decoration: underline;
+}
+#profileInfo{
+    margin-top: 15px;
+    gap: 15px;
+}
+#profileInfo p{
+    margin-top: 15px;
+    text-transform: capitalize;
+    font-family: Teachers;
+   
+}
+.pmain{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contaner{
+    position: relative;
+    width: 650px;
+    height:450px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow:  0 0 30px rgba(0, 0, 0, 0.2 ); ;
+}
+.from-box.rigister{
+    visibility: hidden;
+
+}
+
+.contaner.active .from-box.rigister{
+    visibility: visible;
+}
+.contaner h1{
+  font-size: 25px;
+margin: -10px 0;
+font-family: futura;
+
+}
+.from-box{
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    padding: 35px;
+    z-index: 1;
+    background-color: #ffffff;
+    text-align: center;
+    transition: .6s ease-in-out 1.2s, visibility 0s 1s;
+
+}
+.contaner.active .from-box{
+    right: 50%;
+}
+form{
+
+    width: 100%;
+}
+.input-box{
+    position: relative;
+    margin: 30px 0;
+}
+.input-box input{
+   width: 100%;
+   padding:5px 30px 10px 15px; ;
+   background: #eee;
+   border-radius: 8px ;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   color: #333;
+}
+.input-box input::placeholder{
+    color: #888;
+    font-weight: 400;
+   
+}
+.input-box i{
+ position: absolute;
+ right: 30px;
+ top: 40%;
+ transform: translate(-50%);
+ font-size: 15px;
+ color: #888;
+}
+.button{
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    background: #0044ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px ;
+    color: #ffffff;
+    font-family: Teachers;
+    font-weight: 600;
+}
+.contaner.active .togglebox::before{
+   left: 50%;
+
+}
+
+.togglebox{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+
+}
+.togglebox::before{
+    content: '';
+    position: absolute;
+    width: 300%;
+    left: -250%;
+    z-index: 2;
+    border-radius: 150px;
+    height: 100%;
+    transition: 1s ease-in-out;
+    background: #0545f4;
+ 
+}
+.toggle-panel.toggle-left{
+  left: 0;
+  transition-delay: 1.2s;
+}
+.contaner.active .toggle-panel.toggle-left{
+  left: -50%;
+  transition-delay: .6S;
+}
+.toggle-panel.toggle-right{
+    right: -50%;
+    transition-delay: .6s;
+}
+.contaner.active .toggle-panel.toggle-right{
+    right: 0;
+    transition-delay:1.2s;
+}
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    /* background-color: #66ff00; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 2;
+    transition: .6S ease-in-out;
+}
+.toggle-panel p{
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+.toggle-panel button{
+  height: 36px;
+  width: 140px;
+  background: transparent;
+  border: 2px solid #ffffff;
+ box-shadow: none;
+}
+@media screen and (max-width:650px) {
+    .contaner{
+        height: calc(100vh- 40px);
+        height:600px;
+        width: 300px;
+       
+
+    }
+    .contaner h1{
+  font-size:15px;
+}
+    .from-box{
+        bottom: 0;
+       padding: 40px;
+ width: 100%;
+ height:70% ;
+}
+.togglebox::before{
+    left: 0;
+    top:-270% ;
+    width: 100%;
+    height: 300%;
+    border-radius: 20VW;
+   
+}
+.toggle-panel{
+ 
+    width: 100%;
+    height: 30%;
+}
+.contaner.active .togglebox::before{
+    left: 0;
+    top: 70%;
+
+}
+.toggle-panel.toggle-left{
+    top: 0;
+
+}
+.contaner.active .toggle-panel.toggle-left{
+    left: 0;
+    top: -30%;
+}
+.toggle-panel.toggle-right{
+    right: 0;
+    bottom: -30%;
+
+    
+}
+.contaner.active .toggle-panel.toggle-right{
+    bottom: 0;
+}
+.contaner.active .from-box{
+    right: 0;
+    bottom: 30%;
+}
+
+
+
+}
+
+
+header {
+   width: 100%;
+   height: 60px;
+   background-color: #1e44ac;
+   display: flex;
+}
+
+.navpart1 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4vw;
+}
+
+.life h1 {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-family: 'Futura', sans-serif;
+}
+.winning h5 {
+    font-size: 0.6em;
+    margin-left: 2.1%;
+    margin-left: 39px;
+    font-family: 'Futura', sans-serif;
+    color: #ffffff;
+}
+.winning  {
+   height: 25px;
+   width: 200px;
+   display: flex;
+}
+.navpart2 {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    gap: 15px;
+    margin-left: 5vw;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.7%;
+}
+.navpart2 a {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 1em;
+    color: #ffffff;
+    margin-left: 5%;
+    text-decoration: none;
+}
+#hdn2::after{
+    content: "";
+    height: 0.8px;
+    width: 100%;
+    display: block;
+    background-color: #ffffff;
+    display: block;
+    transform: scale(0);
+    transition: transform 0.5s;
+    transform-origin: right;
+
+}
+#hdn2:hover::after{
+    transform: scale(1);
+    transform-origin: left;
+  
+}
+.bar {
+    height: 50px;
+    width: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bar i {
+    display: none;
+}
+.hidden {
+    height: 300px;
+    width: 100%;
+    background-color: #1e44ac;
+    display: flex;
+    gap: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none; /* Initially hidden */
+}
+
+.hidden a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.page1{
+    height:500px;
+    width: 100vw;
+    display: flex;
+  
+}
+.pagem{
+    height:600px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    
+}
+.leftm{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leftm h1{
+    font-family: futura;
+    font-size: 5vw;
+   
+}
+.leftm p{
+    font-family: futura;
+    
+    font-size: 3vw;
+   
+}
+.leftm span{
+    font-family: futura;
+   color: #1e44ac;
+   
+}
+.rightm{
+    height: 50%;
+    width: 100%;
+margin-bottom: 25px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.rightmimg{
+    height: 80%;
+    width: 90%;
+    margin-bottom: 8vh;
+}
+.rightmimg img{
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+
+}
+.righmti{
+    height:20%;
+    width: 100%;
+}
+.righmti h3{
+    color: #000dff;
+    font-family: futura;
+}
+.righmti{
+    height:20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.righmti p{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #1900bc;
+  font-size: 0.5rem;
+}
+.left {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.left h1{
+    color: #000000;
+    font-family: futura;
+  font-size: 2vw;
+  margin-left: 5vw;
+}
+.left p{
+    color: #000000;
+    font-family: futura;
+    font-size: 1vw;
+    margin-left: 5vw;
+}
+.left span{
+    color: #1e44ac;
+}
+
+.right{
+    height: 100%;
+    width: 40%;
+    
+}
+.right .rightimg{
+   height: 70%;
+   width: 100%;
+}
+.rightimg img{
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+    object-fit: contain;
+    
+}
+.vacvit{
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.vacvit h1{
+ text-align: center;
+ font-family: futura;
+ color: #1100ff;
+ font-size:3rem;
+ margin-left: 3.5vw;
+}
+.vacvit p{
+color: #2e00fd;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-left: 8vw;
+}
+.jsdy2{
+    height: 100px;
+    margin-top: 5vh;
+    width: 60%;
+   border: 2px solid blue;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-right: 13vw;
+   box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+}
+.block{
+    height: 90px;
+    width: 100%;
+    background-color: #0044ff;
+    display: flex;
+    border: 1.5px solid black;
+}
+.b1{
+    height: 100%;
+    width: 50%;
+    background-color: #f7f1f1;
+    display: flex;
+    background-color: #2b61f6;
+    justify-content: center;
+    align-items: center;
+}
+.b1 h2{
+    font-family: futura;
+   font-size: 1rem;
+    color: #ffffff;
+}
+#b2{
+    background-color: #0044ff;
+}
+.page2{
+    height: 300px;
+ 
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.pg-1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-1 h2{
+    font-family: futura;
+}
+.pg-1 p{
+    padding: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.img1{
+    height: 100%;
+    width: 80%;
+    margin-left: 8vw;
+
+}
+.img1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pg-2{
+    height: 100%;
+    width: 50%;
+   
+}
+.page3{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+}
+.pg-3{
+    height: 100%;
+    width: 50%;
+}
+.img2{
+        height: 100%;
+        width: 80%;
+     
+    
+}
+.img2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 30px;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.pg-4{
+    height: 100%;
+    width: 50%;
+}
+.pg-4 h2{
+    margin-left: 15vw;
+    font-family: futura;
+}
+.pg-4 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.page4{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+
+}
+.pg-5{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.pg-5 h2{
+    font-family: futura;
+}
+.pg-5 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.pg-6{
+    height: 100%;
+    width: 50%;
+}
+.img3{
+        height: 100%;
+        width: 80%;
+        margin-left: 8vw;
+     
+    
+}
+.img3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.page5{
+    height: 300px;
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    
+
+}
+.pg-7{
+ 
+    width: 50%;
+}
+.img4{
+        height: 100%;
+        width: 80%;
+     margin-left: 2vw;
+    
+}
+#user-new{
+    font-size: 2vw;
+   position: relative;
+   left: 3vw;
+}
+.img4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+.pg-8{
+    height: 100%;
+    width: 50%;
+    
+}
+.pg-8 h2{
+    margin-left: 15vw;
+    font-family: futura;
+}
+.pg-8 p{
+    padding: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ddoc{
+ height: 15vh;
+ width: 100vw;
+ display: flex;
+ margin-top: 25px;
+ flex-direction: column;
+ align-items: center;
+}
+.ddoc h3{
+font-family: futura;
+text-transform: capitalize;
+}
+.dow{
+    height: 5vh;
+    width: 15vw;
+    margin-top: 5px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+    border-radius: 5px; gap: 1.5vw;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+
+}
+.dow a{
+   text-decoration: none;
+   color: #000;
+   
+}
+.dow a:hover{
+  
+   color: #0234ff;
+   
+}
+.srch{
+    min-height: 120vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sr1{
+    height:300px ;
+    width: 400px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    border: 2px solid black;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  transition: 0.1s;
+}
+.sr1:hover{
+   transform: scale(1.03);
+}
+
+
+.sr1-1{
+    height: 60%;
+    width:75%;
+    border-radius: 3px;
+    overflow: hidden;
+
+}
+.sr1 p{
+  margin-left: 1vw;
+  position: relative;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ margin-left: 2vw;
+ font-size: 2vh;
+}
+.sr1 h3{
+    font-family: futura;
+    font-size: 0.8rem;
+    color: #0138ce;
+    position: relative;
+    right:8vw;
+
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    border: 2px solid rgb(0, 0, 0);
+    
+
+   
+}
+.tab{
+    height: 3.5vh;
+    width: 16vh;
+    background-color: rgb(0, 2, 149);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     text-decoration: none;
+     margin-left: 16vw;
+     margin-bottom: 1.1vh;
+}
+.tab p{
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    right: 8px;
+    
+}
+footer{
+    height: 65vh;
+    width:100vw;
+    background-color: #1e44ac;
+}
+
+.fotter{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.fot1-1{
+    height: 30%;
+    width: 35vh;
+    margin-top: 10vh;
+
+}
+.fot1-1 h3{
+    /* opacity: 0.5; */
+    color:  #99aff2;
+}
+.fot1-1 p{
+    /* opacity: 0.5; */
+    color:  #ffffff;
+font-size: 1rem;
+margin-top: 2vh;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fot1-1 img{
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+    padding: 2vw;
+    margin-left: 1vw;
+    object-fit: contain;
+}
+.fot1-1-1{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotter2{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+    
+}
+.fot2-1{
+    height: 100%;
+   width: 70%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.fot2-1 h3{
+    color: #ffffff;
+    font-size: 1rem;
+    margin-right: 8vw;
+     font-family: futura;
+}
+.fot2-2{
+    height: 100%;
+   width:30% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+.fot2-2 a{
+   text-decoration: none;
+   color: #ffffff;
+   font-family: futura;
+   font-size: 0.7rem;
+}
+.jsdy2 h1{
+font-size: 1vw;
+position: relative;
+top: 2px;
+right: 20px;
+
+}
+#num2{
+    font-family: futura;
+    font-size: 1.8vw;
+  position: relative;
+  top: 1.5vh;
+}
+.vaxsrc{
+    height:12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    display: flex;
+    flex-direction: column;
+}
+.vaxsrc h2{
+   font-family: futura;
+}
+#input1{
+    height: 7vh;
+    width:40vw;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 5px rgba(0, 4, 255, 0.5);
+}
+#button{
+    height: 7vh;
+    width:10vw;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #2500f5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.dropdown-content{
+    position: absolute;
+    background-color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 35%;
+    height: 15%;
+    color: #0404f0;
+    border: 1px solid #fffbfb;
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;  
+    overflow: auto;
+    display: none;
+    z-index: 1;
+    margin-top: 19%;
+    margin-right: 15%;
+    padding-bottom: 10px;
+}  
+.dropdown-content::-webkit-scrollbar{
+    display: none;
+}
+.dropdown-content div {
+    padding: 11px;
+    font-weight: 500;
+    color: #000000;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.dropdown-content div:hover {
+    background-color: #0612fe;
+    color: #ffffff;
+}
+#input1::-webkit-appearance{
+    display: none;
+}
+.hdnwin{
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    margin-top: 5px;
+    border-radius: 25px;
+    border: 2px solid rgb(251, 0, 38);
+}
+@media (max-width: 500px) {
+
+
+
+    .hdnwin{
+       display: none;
+    }
+    .dropdown-content{
+        margin-top: 65%;
+        margin-right: 15%;
+        width: 65%;
+        height: 65%;
+
+        
+    }  
+    .right{
+        display: none;
+    }
+    #input1{
+        height: 4vh;
+        width:55vw;
+
+        
+    }
+    #button{
+        height: 4vh;
+        width:15vw;
+       
+    }
+    .jsdy2 h1{
+      background-color: #0044ff;
+        }
+    #num2{
+        font-size: 2vw;
+        background-color: #0044ff;
+    } 
+    .fot1-1 p{
+      margin-left: 4vw;
+      font-size: 0.7rem;
+    }
+    .fot1-1-1 {
+        padding: 4vw;
+    }
+    .fot1-1 h3{
+        /* opacity: 0.5; */
+        font-size: 0.7rem;
+        margin-left: 2vh;
+        color:  #99aff2;}
+    .fot2-2{
+        gap: 2vh;
+    }
+    .fot2-1 h3{
+        color: #ffffff;
+        font-size: 0.5rem;
+        margin-right: 8vw;
+        padding: 25px;
+         font-family: futura;
+    }
+    .fot2-2 a{
+        /* text-decoration: none; */
+        color: #ffffff;
+        font-family: futura;
+        font-size: 0.4rem;
+     }
+    .fot2-2 a:hover{
+      text-decoration: underline white;
+
+     }
+    .navpart1 h1, .navpart1 h5{
+        font-size: 3vw;
+    }
+    .navpart2 a {
+        display: none;
+    }
+    .bar i {
+        display: block;
+        position: relative;
+        left: 80px;
+        font-size: 25px;
+        bottom: 12px;
+    }
+    .hidden a {
+        font-size: 2vw;
+    }
+    .page1{
+        display: none;
+    }
+    .pagem{
+        height:650px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .leftm{
+        height: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .leftm h1{
+        font-family: futura;
+        font-size: 5vw;
+    margin-bottom: 2vh;
+        margin-left: 4vw;
+       
+    }
+    .leftm p{
+        font-family: futura;
+        font-size: 3vw;
+   
+        margin-left: 4vw;
+    
+    }
+    .leftm span{
+        font-family: futura;
+       color: #0044ff;
+       
+    }
+    .jsdy{
+        height: 70px;
+        margin-top: 2vh;
+       width: 90vw;
+       border: 2px solid blue;
+       border-radius: 5px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       box-shadow: inset 0 0 35px rgba(0, 4, 255, 0.5);
+    }
+    .jsdy2 h1{
+        font-size: 35px;
+      margin-top: 11px;
+    }
+      
+    
+    .img{
+        height: 90%;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    .img2 img{
+        height: 100%;
+        width: 100%;
+        margin-bottom: 5vh;
+       
+    }
+    .b1 h2{
+        font-family: futura;
+       font-size: 2vw;
+       margin-left: 3vw;
+        color: #ffffff;
+    }
+    .page2, .page3, .page4, .page5 {
+        flex-direction: column; 
+        height: auto; 
+    }
+    .pg-1, .pg-2,
+    .pg-3, .pg-4,
+    .pg-5, .pg-6,
+    .pg-7, .pg-8 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img1, .img2, .img3, .img4 {
+        width: 90%; 
+        margin-left: 0;
+    }
+
+    .pg-1 p, .pg-4 p, .pg-5 p, .pg-8 p {
+       font-size: 4vw;     
+    }
+    .pg-1 h2, .pg-4 h2, .pg-5 h2, .pg-8 h2 {
+        font-size: 0.9em; 
+        text-align: center;
+        margin-left: 0;
+    }
+    .vaxsrc h2{
+        font-family: futura;
+        font-size: 0.9em; 
+     }
+.img2 img{
+    display: none;
+   
+} 
+.img4 img{
+    display: none;
+} 
+     .img1 img,  .img3 img{
+        height: auto; 
+        object-fit: contain;
+        object-position: center;
+        border-radius: 15px;
+    }
+    .srch{
+       gap: 20px;
+     padding: 35px;
+    }
+    .sr1-1{
+        height: 65%;
+        width: 90%;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .sr1-1{
+    height: 55%;
+    width: 90%;
+    
+    
+}
+    .sr1 h3{
+  position: relative;
+  right: 22vw;
+}
+.sr1-1 img {
+    height: 100%;
+    width: 100%;
+    border: 2px solid blue;
+    object-fit:cover;
+    border-radius: 8px;
+   
+}
+.sr1 p{
+  
+   font-size: 1.7vh;
+  }
+.tab{
+    margin-top: 18px;
+    margin-right: 15vw
+} .ddoc h3{
+    font-size: 3.8vw;
+}
+    .dow{
+        height: 4vh;
+        width: 35vw;
+       margin-top: 20px
+    
+    }
+    #user-new{
+        display: none
+    }
+
+    .winning h5 {
+        font-size: 0.4em;
+      position: relative;
+      right: 30px;
+      
+    }
+    
+    };
+@media (max-width: 700px) {
+    .navpart2 a {
+        font-family: sans-serif;
+        font-size: 0.8em;
+        margin-bottom: 2vw;
+    }
+
+}
+
+    </style>
+    <script>
+  const contaner = document.querySelector('.contaner');
+  const registerBtn = document.querySelector('.button.register-btn');
+  const LogBtn = document.querySelector('.button.login');
+ registerBtn.addEventListener("click", () => {
+    contaner.classList.add('active');
+ })
+ LogBtn.addEventListener("click", () => {
+    contaner.classList.remove('active');
+ })
+  
+ 
+// function showRegister() {
+//     document.getElementById('loginForm').style.display = 'none';
+//     document.getElementById('registerForm').style.display = 'block';
+// }
+
+// function showLogin() {
+//     document.getElementById('registerForm').style.display = 'none';
+//     document.getElementById('loginForm').style.display = 'block';
+// }
+
+// function register() {
+//     const username = document.getElementById('registerUsername').value;
+//     const password = document.getElementById('registerPassword').value;
+//     const mobile = document.getElementById('registerMobile').value;
+//     const age = document.getElementById('Age').value;
+//     const ages = document.getElementById('ages')
+//     const span2 = document.getElementById('validn'); // Error span for password validation
+//     const span3 = document.getElementById('valid'); // Separate span for username validation
+    
+//     // Username validation
+//     if (username.trim() === "") {
+//         span3.innerHTML = `Username cannot be empty.`;
+//         username.style.border= '2px solid red'
+//         return; // Stop execution if username is invalid
+//     }
+//     if(isNaN(age)){
+//         setInterval(function(){
+//             ages.innerHTML = `Age contain number!!`;
+//             return; // Stop execution if username is invalid
+//         },2000)
+        
+//     }
+//     if (username.length < 3 || username.length > 7) {
+//         span3.innerHTML = `Username must be between 3 and 7 characters.`;
+//         return; // Stop execution if username is invalid
+//     }
+//     const usernamePattern = /^[a-zA-Z0-9_]+$/;
+  
+//     // Password validation
+//     if (password.length !== 6) {
+//         span2.innerHTML = `Enter the minimum 6-digit password!`;
+//         return; // Stop execution if password is invalid
+//     } else {
+//         span2.innerHTML = ''; // Clear error message if password is valid
+//     }
+
+//     // Mobile number validation
+//     if (!/^\d{10}$/.test(mobile)) {
+//         alert('Please enter a valid 10-digit mobile number');
+//         return; // Stop execution if mobile is invalid
+//     } else if (isNaN(mobile)) {
+//         alert('Enter only numbers in the mobile section');
+//         return; // Stop execution if mobile contains non-numeric values
+//     }
+
+//     // Check if the username already exists
+//     const users = JSON.parse(localStorage.getItem('users')) || [];
+//     const existingUser = users.find(user => user.username === username);
+
+//     if (existingUser) {
+//         alert('Username already exists!');
+//         return; // Stop execution if username exists
+//     }
+
+//     // Save new user
+//     users.push({ username, password, mobile, age });
+//     localStorage.setItem('users', JSON.stringify(users));
+//     alert('Registration successful! Please login.');
+//     showLogin();
+// }
+
+// function login() {
+//     const username = document.getElementById('loginUsername').value;
+//     const password = document.getElementById('loginPassword').value;
+
+//     const users = JSON.parse(localStorage.getItem('users')) || [];
+//     const user = users.find(user => user.username === username && user.password === password);
+
+//     if (user) {
+//         localStorage.setItem('loggedInUser', JSON.stringify(user)); // Save logged-in user
+//         console.log("Logged In User saved to localStorage:", user); // Debug log
+        
+//         alert('Login successfully'); 
+//         window.location.href = 'http://localhost:3002/'; // Redirect to another page
+//     } else {
+//         alert('Invalid credentials!');
+//     }
+// }
+
+// function logout() {
+//     localStorage.removeItem('loggedInUser');
+//     window.location.href = 'http://localhost:3002/';
+// }
+
+// // Check login status on index page load
+// window.onload = function() {
+//     const loggedInUser = localStorage.getItem('loggedInUser');
+//     const loginLink = document.getElementById('loginLink');
+
+//     if (loggedInUser) {
+//         loginLink.textContent = ' PROFILE';
+//         loginLink.href = 'profile.html';
+//     } else {
+//         loginLink.textContent = 'LOGIN';
+//         loginLink.href = 'http://localhost:3002/';
+//     }
+// };
+// document.addEventListener('DOMContentLoaded', () => {
+        
+//         const user = JSON.parse(localStorage.getItem('loggedInUser'));
+//         console.log(user.username)
+//         if (user) {
+//             document.getElementById('profileInfo').innerHTML = `
+//                 <p>Username: ${user.username}</p>
+//                 <p>Mobile: ${user.mobile}</p>
+//                 <p>Age: ${user.age}</p>
+//             `;
+//         } else {
+//             window.location.href = 'http://localhost:3002/';
+//         }
+//     });
+    </script>
+    
+</body>
+</html>
